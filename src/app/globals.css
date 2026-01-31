@@ -1,8 +1,14 @@
 @import 'tailwindcss';
 
 @theme {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: #434343;
+  --color-secondary: #3e3e3e;
+  --color-background: #ffffff;
+
+  --font-family-heading: var(--font-cormorant), serif;
+  --font-family-body: var(--font-cormorant), serif;
+  --font-family-nav: var(--font-lora), serif;
+  --font-family-sans: var(--font-raleway), sans-serif;
 }
 
 :root {
@@ -20,5 +26,16 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), sans-serif;
+}
+
+.font-nav {
+  font-family: var(--font-lora), serif;
+}
+
+.font-heading {
+  font-family: var(--font-cormorant), serif;
+}
+
+.font-body {
+  font-family: var(--font-cormorant), serif;
 }
