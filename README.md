@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Anita Dajka Wedding - Frontend
 
-## Getting Started
+A modern, high-performance photography portfolio website built with Next.js and Sanity CMS.
+Designed to replace the previous Showit site with a faster, more flexible, and SEO-friendly solution.
 
-First, run the development server:
+## 🚀 Tech Stack
+
+- **Framework:** Next.js (App Router)
+- **Styling:** Tailwind CSS (v4)
+- **CMS Client:** `next-sanity`
+- **Package Manager:** Bun
+- **Tooling:** ESLint, Prettier, Husky, Commitlint, Standard Version
+
+## 🛠️ Getting Started
+
+### 1. Prerequisites
+
+- [Bun](https://bun.sh/) installed locally.
+- Access to the Sanity project (Project ID in environment variables).
+
+### 2. Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
+# Install dependencies
+bun install
+```
+
+### 3. Environment Variables
+
+Copy the example environment file:
+
+```bash
+cp .env.example .env.local
+```
+
+Fill in the required values in `.env.local`:
+
+- `NEXT_PUBLIC_SANITY_PROJECT_ID`: Your Sanity Project ID
+- `NEXT_PUBLIC_SANITY_DATASET`: `production` or `development`
+
+### 4. Running Locally
+
+```bash
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📜 Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | Description |
+| hum | hum |
+| `bun dev` | Start development server |
+| `bun run build` | Build the application for production |
+| `bun run postbuild` | Generates sitemap.xml and robots.txt (runs automatically after build) |
+| `bun run lint` | Run ESLint check |
+| `bun run format` | Check formatting with Prettier |
+| `bun run format:fix` | Fix formatting issues |
+| `bun run release` | Generate changelog, bump version, and tag release |
 
-## Learn More
+## 📂 Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+- `src/app`: Next.js App Router pages and layouts.
+- `src/components`: Reusable UI components.
+- `src/lib`: Utility functions and Sanity client configuration.
+- `public`: Static assets.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🤝 Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project uses **Conventional Commits** (e.g., `feat: add gallery component`, `fix: mobile padding`).
+Husky hooks will prevent committing if linting fails or commit messages are invalid.
