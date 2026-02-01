@@ -2,31 +2,40 @@ import { type NextRequest, NextResponse } from 'next/server';
 import { revalidateTag } from 'next/cache';
 import { parseBody } from 'next-sanity/webhook';
 
-export async function POST(req: NextRequest) {
+export const POST = async (req: NextRequest) => {
   try {
-    const { isValidSignature, body } = await parseBody<{ _type: string }>(
-      req,
-      process.env.SANITY_REVALIDATE_SECRET,
-    );
+    const secret = process.env.SANITY_REVALIDATE_SECRET;
+
+    if (!secret) {
+      console.error('[API/Revalidate] Missing SANITY_REVALIDATE_SECRET env variable');
+      return NextResponse.json({ message: 'Server configuration error' }, { status: 500 });
+    }
+
+    const { isValidSignature, body } = await parseBody<{ _type: string }>(req, secret);
 
     if (!isValidSignature) {
-      const message = 'Invalid signature';
-      console.warn(message);
-      return new Response(message, { status: 401 });
+      console.warn('[API/Revalidate] Invalid signature attempt');
+      return NextResponse.json({ message: 'Invalid signature' }, { status: 401 });
     }
 
     if (!body?._type) {
-      const message = 'Bad Request: Missing _type';
-      console.error(message);
-      return new Response(message, { status: 400 });
+      console.error('[API/Revalidate] Body missing _type');
+      return NextResponse.json({ message: 'Bad Request: Missing _type' }, { status: 400 });
     }
 
-    console.log(`Revalidating tag: ${body._type}`);
-    revalidateTag(body._type);
+    const tag = body._type;
+    console.log(`[API/Revalidate] Success: Revalidating tag "${tag}"`);
 
-    return NextResponse.json({ body });
-  } catch (err) {
-    console.error(err);
-    return new Response('Internal Server Error', { status: 500 });
+    revalidateTag(tag, 'max');
+
+    return NextResponse.json({
+      revalidated: true,
+      tag,
+      now: Date.now(),
+    });
+  } catch (err: unknown) {
+    const error = err instanceof Error ? err : new Error(String(err));
+    console.error('[API/Revalidate] Unexpected Error:', error.message);
+    return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
   }
-}
+};
