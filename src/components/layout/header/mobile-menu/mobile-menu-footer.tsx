@@ -5,16 +5,16 @@ import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { Instagram, Facebook } from 'lucide-react';
 import { menuFooterVariants } from '../animations/mobile-menu.variants';
+import type { MobileMenuFooterProps } from '../types/header.types';
 
-const CONTACT_INFO = {
-  phone: '+36 30 123 4567',
-  email: 'hello@anitadajka.com',
-  instagram: 'https://instagram.com/anitadajka',
-  facebook: 'https://facebook.com/anitadajka',
-} as const;
-
-export const MobileMenuFooter = (): React.JSX.Element => {
+export const MobileMenuFooter = ({ settings }: MobileMenuFooterProps): React.JSX.Element => {
   const t = useTranslations('contact');
+
+  // Get contact info from CMS settings with fallbacks
+  const phone = settings?.phone ?? '';
+  const email = settings?.email ?? '';
+  const instagramUrl = settings?.instagramUrl ?? '';
+  const facebookUrl = settings?.facebookUrl ?? '';
 
   return (
     <motion.footer
@@ -29,43 +29,53 @@ export const MobileMenuFooter = (): React.JSX.Element => {
           {t('title')}
         </h3>
         <address className="flex flex-col gap-3 not-italic">
-          <a
-            href={`tel:${CONTACT_INFO.phone.replace(/\s/g, '')}`}
-            className="text-xl tracking-wider hover:text-primary/70 hover:underline underline-offset-8 decoration-primary/30 decoration-[0.5px] transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-            aria-label={t('phoneLabel', { phone: CONTACT_INFO.phone })}
-          >
-            {CONTACT_INFO.phone}
-          </a>
-          <a
-            href={`mailto:${CONTACT_INFO.email}`}
-            className="text-xl tracking-wider hover:text-primary/70 hover:underline underline-offset-8 decoration-primary/30 decoration-[0.5px] transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-            aria-label={t('emailLabel', { email: CONTACT_INFO.email })}
-          >
-            {CONTACT_INFO.email}
-          </a>
+          {phone && (
+            <a
+              href={`tel:${phone.replace(/\s/g, '')}`}
+              className="text-xl tracking-wider hover:text-primary/70 hover:underline underline-offset-8 decoration-primary/30 decoration-[0.5px] transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              aria-label={t('phoneLabel', { phone })}
+            >
+              {phone}
+            </a>
+          )}
+          {email && (
+            <a
+              href={`mailto:${email}`}
+              className="text-xl tracking-wider hover:text-primary/70 hover:underline underline-offset-8 decoration-primary/30 decoration-[0.5px] transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              aria-label={t('emailLabel', { email })}
+            >
+              {email}
+            </a>
+          )}
         </address>
       </section>
 
-      <nav aria-label={t('socialLinksLabel')} className="flex gap-4">
-        <a
-          href={CONTACT_INFO.instagram}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-2 -m-2 hover:text-primary/60 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-          aria-label={t('instagramLabel')}
-        >
-          <Instagram size={24} strokeWidth={1} aria-hidden="true" />
-        </a>
-        <a
-          href={CONTACT_INFO.facebook}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-2 -m-2 hover:text-primary/60 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-          aria-label={t('facebookLabel')}
-        >
-          <Facebook size={24} strokeWidth={1} aria-hidden="true" />
-        </a>
-      </nav>
+      {(instagramUrl || facebookUrl) && (
+        <nav aria-label={t('socialLinksLabel')} className="flex gap-4">
+          {instagramUrl && (
+            <a
+              href={instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 -m-2 hover:text-primary/60 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              aria-label={t('instagramLabel')}
+            >
+              <Instagram size={24} strokeWidth={1} aria-hidden="true" />
+            </a>
+          )}
+          {facebookUrl && (
+            <a
+              href={facebookUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 -m-2 hover:text-primary/60 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              aria-label={t('facebookLabel')}
+            >
+              <Facebook size={24} strokeWidth={1} aria-hidden="true" />
+            </a>
+          )}
+        </nav>
+      )}
     </motion.footer>
   );
 };

@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTranslations } from 'next-intl';
 import { Container } from '@/components/ui/container';
 import { MobileMenuProps } from '../types/header.types';
 import { MobileMenuBody } from './mobile-menu-body';
@@ -12,9 +11,12 @@ import {
   menuIntroLayerVariants,
 } from '../animations/mobile-menu.variants';
 
-export const MobileMenu = ({ isOpen }: MobileMenuProps): React.JSX.Element => {
-  const t = useTranslations('navigation');
-
+export const MobileMenu = ({
+  isOpen,
+  navigation,
+  settings,
+  locale,
+}: MobileMenuProps): React.JSX.Element => {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -30,7 +32,7 @@ export const MobileMenu = ({ isOpen }: MobileMenuProps): React.JSX.Element => {
 
           <motion.nav
             id="mobile-menu"
-            aria-label={t('mainNavigation')}
+            aria-label="Mobile Navigation"
             variants={menuContentLayerVariants}
             initial="initial"
             animate="animate"
@@ -39,8 +41,8 @@ export const MobileMenu = ({ isOpen }: MobileMenuProps): React.JSX.Element => {
           >
             <Container className="flex h-full flex-col overflow-y-auto">
               <div className="flex min-h-full w-full flex-col justify-between pt-24 pb-10">
-                <MobileMenuBody />
-                <MobileMenuFooter />
+                <MobileMenuBody navigation={navigation} locale={locale} />
+                <MobileMenuFooter settings={settings} />
               </div>
             </Container>
           </motion.nav>

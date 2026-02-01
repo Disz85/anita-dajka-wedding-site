@@ -5,6 +5,9 @@ import { notFound } from 'next/navigation';
 import { Header } from '@/components/layout/header';
 import { routing } from '@/i18n/routing';
 import type { Locale } from '@/i18n/config';
+import { sanityFetch } from '@/lib/sanity.fetch';
+import { headerQuery, settingsQuery } from '@/lib/queries';
+import type { HeaderData, SiteSettings } from '@/lib/queries';
 import { cormorant, lora, proza, raleway } from '../fonts';
 import '../globals.css';
 
@@ -39,6 +42,7 @@ export async function generateMetadata({
  * - HTML lang attribute based on locale
  * - Global Font injection (CSS variables)
  * - NextIntlClientProvider for translations
+ * - Server-side CMS data fetching for header and settings
  * - Global styles application
  */
 export default async function LocaleLayout({ children, params }: Props) {
@@ -52,8 +56,12 @@ export default async function LocaleLayout({ children, params }: Props) {
   // Enable static rendering
   setRequestLocale(locale);
 
-  // Fetch messages for the current locale
-  const messages = await getMessages();
+  // Fetch messages and CMS data in parallel
+  const [messages, headerData, settings] = await Promise.all([
+    getMessages(),
+    sanityFetch<HeaderData | null>(headerQuery, {}, { tags: ['header'] }),
+    sanityFetch<SiteSettings>(settingsQuery, {}, { tags: ['settings'] }),
+  ]);
 
   return (
     <html lang={locale} suppressHydrationWarning>
@@ -62,7 +70,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         className={`${cormorant.variable} ${lora.variable} ${proza.variable} ${raleway.variable} font-body text-primary antialiased bg-background`}
       >
         <NextIntlClientProvider messages={messages}>
-          <Header />
+          <Header data={headerData} settings={settings} locale={locale} />
           {children}
         </NextIntlClientProvider>
       </body>
