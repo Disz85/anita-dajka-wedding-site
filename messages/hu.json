@@ -1,0 +1,35 @@
+{
+  "common": {
+    "siteName": "Anita Dajka"
+  },
+  "navigation": {
+    "openMenu": "Menü megnyitása",
+    "closeMenu": "Menü bezárása",
+    "openMenuScreenReader": "Navigációs menü megnyitása",
+    "mainNavigation": "Fő navigáció",
+    "primaryNavigation": "Elsődleges navigáció",
+    "secondaryNavigation": "Másodlagos navigáció",
+    "home": "Főoldal",
+    "portfolio": "Portfólió",
+    "weddings": "Esküvők",
+    "about": "Rólam",
+    "journal": "Napló",
+    "contact": "Kapcsolat"
+  },
+  "contact": {
+    "title": "Kapcsolat",
+    "phoneLabel": "Hívás: {phone}",
+    "emailLabel": "Email küldése: {email}",
+    "instagramLabel": "Követés Instagramon",
+    "facebookLabel": "Követés Facebookon",
+    "socialLinksLabel": "Közösségi média linkek"
+  },
+  "notFound": {
+    "message": "Az oldal nem található",
+    "backHome": "Vissza a főoldalra"
+  },
+  "metadata": {
+    "title": "Anita Dajka - Esküvői Fotós",
+    "description": "Professzionális esküvői fotózás. Örökítsd meg a legszebb pillanatokat."
+  }
+}

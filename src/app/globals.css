@@ -8,6 +8,7 @@
   --font-family-heading: var(--font-cormorant), serif;
   --font-family-body: var(--font-cormorant), serif;
   --font-family-nav: var(--font-lora), serif;
+  --font-family-subtitle: var(--font-proza), sans-serif;
   --font-family-sans: var(--font-raleway), sans-serif;
 }
 
@@ -30,6 +31,10 @@ body {
 
 .font-nav {
   font-family: var(--font-lora), serif;
+}
+
+.font-subtitle {
+  font-family: var(--font-proza), sans-serif;
 }
 
 .font-heading {

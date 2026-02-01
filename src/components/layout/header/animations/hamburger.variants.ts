@@ -1,22 +1,4 @@
-import { Variants, Transition } from 'framer-motion';
-
-/**
- * Animation variants for the "Menu" / "Close" text container.
- * slides up to reveal "Close" and down to reveal "Menu".
- */
-export const menuTextVariants: Variants = {
-  closed: { y: 0 },
-  open: { y: -30 },
-};
-
-/**
- * Shared transition configuration for the text animation.
- * Uses a custom cubic-bezier for a smooth, snappy feel.
- */
-export const menuTextTransition: Transition = {
-  duration: 0.5,
-  ease: [0.76, 0, 0.24, 1],
-};
+import { Variants } from 'framer-motion';
 
 /**
  * Animation for the top line of the hamburger icon.

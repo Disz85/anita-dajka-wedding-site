@@ -17,6 +17,7 @@ const config: Config = {
         heading: ['var(--font-cormorant)', 'serif'],
         body: ['var(--font-cormorant)', 'serif'], // The site uses Cormorant for body too
         nav: ['var(--font-lora)', 'serif'],
+        subtitle: ['var(--font-proza)', 'sans-serif'],
         sans: ['var(--font-raleway)', 'sans-serif'],
       },
     },

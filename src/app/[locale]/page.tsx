@@ -1,3 +1,4 @@
+import { setRequestLocale } from 'next-intl/server';
 import { client } from '@/lib/sanity';
 
 // GROQ query to fetch the settings singleton
@@ -8,8 +9,17 @@ interface Settings {
   siteDescription?: string;
 }
 
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
 // Next.js components are async by default in the app directory for data fetching
-export default async function Home() {
+export default async function Home({ params }: Props) {
+  const { locale } = await params;
+
+  // Enable static rendering
+  setRequestLocale(locale);
+
   // Fetch data with ISR (Incremental Static Regeneration)
   // Revalidate at most every 60 seconds
   const settings = await client.fetch<Settings>(SETTINGS_QUERY, {}, { next: { revalidate: 60 } });

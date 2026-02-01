@@ -1,0 +1,33 @@
+{
+  "common": {
+    "siteName": "Anita Dajka"
+  },
+  "navigation": {
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "openMenuScreenReader": "Open navigation menu",
+    "mainNavigation": "Main navigation",
+    "home": "Home",
+    "portfolio": "Portfolio",
+    "weddings": "Weddings",
+    "about": "About",
+    "journal": "Journal",
+    "contact": "Contact"
+  },
+  "contact": {
+    "title": "Contact",
+    "phoneLabel": "Call: {phone}",
+    "emailLabel": "Send email to: {email}",
+    "instagramLabel": "Follow on Instagram",
+    "facebookLabel": "Follow on Facebook",
+    "socialLinksLabel": "Social media links"
+  },
+  "notFound": {
+    "message": "Page not found",
+    "backHome": "Back to home"
+  },
+  "metadata": {
+    "title": "Anita Dajka - Wedding Photographer",
+    "description": "Professional wedding photography. Capture your most beautiful moments."
+  }
+}

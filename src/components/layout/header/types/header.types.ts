@@ -4,7 +4,7 @@
 export type HamburgerProps = {
   isOpen: boolean;
   onClick: () => void;
-  className?: string; // Optional styling
+  className?: string;
 };
 
 export type MobileMenuProps = {
@@ -12,5 +12,18 @@ export type MobileMenuProps = {
 };
 
 export type HeaderProps = {
-  transparent?: boolean; // Future-proof: átlátszó header opció
+  transparent?: boolean;
+};
+
+export type LogoProps = {
+  className?: string;
+  /** Variant to apply blend mode for overlay contexts */
+  variant?: 'default' | 'overlay';
+};
+
+export type MenuItemKey = 'home' | 'portfolio' | 'weddings' | 'about' | 'journal' | 'contact';
+
+export type MenuItem = {
+  key: MenuItemKey;
+  href: string;
 };

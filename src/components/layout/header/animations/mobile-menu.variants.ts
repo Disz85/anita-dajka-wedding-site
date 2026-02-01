@@ -124,3 +124,29 @@ export const menuItemVariants: Variants = {
     },
   },
 };
+
+/**
+ * Animation for the menu footer (contact info, social links).
+ * Appears after all menu items with a fade-in effect.
+ */
+export const menuFooterVariants: Variants = {
+  initial: {
+    opacity: 0,
+    y: 20,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: MENU_ITEMS_START_DELAY + STAGGER_DELAY * 6 + 0.2,
+      duration: 0.5,
+      ease: MENU_ITEM_EASE,
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: 0,
+    },
+  },
+};
