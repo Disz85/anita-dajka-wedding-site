@@ -37,8 +37,8 @@ jobs:
         run: bun run build
         env:
           # Fake env vars for build process (Next.js needs them present)
-          NEXT_PUBLIC_SANITY_PROJECT_ID: 'mock_project_id'
-          NEXT_PUBLIC_SANITY_DATASET: 'mock_dataset'
+          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+          NEXT_PUBLIC_SANITY_DATASET: ${{ vars.NEXT_PUBLIC_SANITY_DATASET }}
 
   commitlint:
     name: Validate Commits
