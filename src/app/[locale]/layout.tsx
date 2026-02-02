@@ -3,11 +3,10 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Header } from '@/components/layout/header';
-import { routing } from '@/i18n/routing';
-import type { Locale } from '@/i18n/config';
-import { sanityFetch } from '@/lib/sanity.fetch';
-import { headerQuery, settingsQuery } from '@/lib/queries';
-import type { HeaderData, SiteSettings } from '@/lib/queries';
+import { routing } from '@/i18n/i18n.routing';
+import type { Locale } from '@/i18n/i18n.config';
+import { getHeaderData } from '@/data-access/header';
+import { getSiteSettings } from '@/data-access/settings';
 import { cormorant, lora, proza, raleway } from '../fonts';
 import '../globals.css';
 
@@ -56,11 +55,11 @@ export default async function LocaleLayout({ children, params }: Props) {
   // Enable static rendering
   setRequestLocale(locale);
 
-  // Fetch messages and CMS data in parallel
+  // Fetch messages and CMS data in parallel using Data Access Layer
   const [messages, headerData, settings] = await Promise.all([
     getMessages(),
-    sanityFetch<HeaderData | null>(headerQuery, {}, { tags: ['header'] }),
-    sanityFetch<SiteSettings>(settingsQuery, {}, { tags: ['settings'] }),
+    getHeaderData(),
+    getSiteSettings(),
   ]);
 
   return (

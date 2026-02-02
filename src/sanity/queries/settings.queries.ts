@@ -1,4 +1,5 @@
 import { groq } from 'next-sanity';
+import { Settings as SanitySettings } from '@/types/sanity.types';
 
 // GROQ query for site settings (contact info)
 export const settingsQuery = groq`
@@ -12,12 +13,5 @@ export const settingsQuery = groq`
   }
 `;
 
-// TypeScript types for site settings
-export interface SiteSettings {
-  siteTitle?: string;
-  siteDescription?: string;
-  phone?: string;
-  email?: string;
-  instagramUrl?: string;
-  facebookUrl?: string;
-}
+// Contract-based type
+export type SiteSettings = SanitySettings;

@@ -1,6 +1,6 @@
 import { getRequestConfig } from 'next-intl/server';
-import { routing } from './routing';
-import { locales, type Locale } from './config';
+import { routing } from './i18n.routing';
+import { locales, type Locale } from './i18n.config';
 
 const isValidLocale = (value: unknown): value is Locale =>
   typeof value === 'string' && locales.some((locale) => locale === value);

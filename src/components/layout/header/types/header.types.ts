@@ -1,7 +1,7 @@
 /**
  * Types specific to the Header layout components
  */
-import type { HeaderData, NavLink, SiteSettings } from '@/lib/queries';
+import type { HeaderData, NavLink, SiteSettings } from '@/sanity/queries';
 
 export type HamburgerProps = {
   isOpen: boolean;

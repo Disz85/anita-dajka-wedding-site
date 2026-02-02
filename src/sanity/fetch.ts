@@ -1,5 +1,5 @@
 import { cache } from 'react';
-import { client } from './sanity';
+import { client } from './client';
 
 /**
  * Cached fetch wrapper for Sanity queries.

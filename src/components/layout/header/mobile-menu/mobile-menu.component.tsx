@@ -2,10 +2,10 @@
 
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Container } from '@/components/ui/container';
+import { Container } from '@/components/ui/container.component';
 import { MobileMenuProps } from '../types/header.types';
-import { MobileMenuBody } from './mobile-menu-body';
-import { MobileMenuFooter } from './mobile-menu-footer';
+import { MobileMenuBody } from './mobile-menu-body.component';
+import { MobileMenuFooter } from './mobile-menu-footer.component';
 import {
   menuContentLayerVariants,
   menuIntroLayerVariants,
@@ -37,14 +37,16 @@ export const MobileMenu = ({
             initial="initial"
             animate="animate"
             exit="exit"
-            className="md:hidden fixed left-0 top-0 h-screen w-full bg-white text-primary z-[60]"
+            className="md:hidden fixed left-0 top-0 h-screen w-full bg-white text-primary z-[60] flex flex-col"
           >
-            <Container className="flex h-full flex-col overflow-y-auto">
-              <div className="flex min-h-full w-full flex-col justify-between pt-24 pb-10">
+            <div className="h-20 flex-shrink-0" aria-hidden="true" />
+
+            <div className="flex-1 overflow-y-auto overscroll-y-contain touch-pan-y">
+              <Container className="flex min-h-full flex-col justify-between pb-10 pt-4">
                 <MobileMenuBody navigation={navigation} locale={locale} />
                 <MobileMenuFooter settings={settings} />
-              </div>
-            </Container>
+              </Container>
+            </div>
           </motion.nav>
         </>
       )}

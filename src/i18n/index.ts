@@ -1,4 +1,4 @@
-export { locales, defaultLocale } from './config';
-export type { Locale } from './config';
-export { routing } from './routing';
-export { Link, redirect, usePathname, useRouter, getPathname } from './navigation';
+export { locales, defaultLocale } from './i18n.config';
+export type { Locale } from './i18n.config';
+export { routing } from './i18n.routing';
+export { Link, redirect, usePathname, useRouter, getPathname } from './i18n.navigation';

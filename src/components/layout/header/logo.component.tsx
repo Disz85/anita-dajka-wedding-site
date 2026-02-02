@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { Link } from '@/i18n/navigation';
+import { Link } from '@/i18n/i18n.navigation';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 import type { LogoProps } from './types/header.types';
@@ -15,11 +15,10 @@ export const Logo = ({
 
   const linkClassName = cn(
     'transition-opacity duration-300 hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
-    variant === 'overlay' && 'mix-blend-difference',
+    variant === 'overlay',
     className,
   );
 
-  // If CMS logo is available, render image
   if (logoUrl) {
     return (
       <Link href="/" className={linkClassName}>
@@ -35,7 +34,6 @@ export const Logo = ({
     );
   }
 
-  // Fallback to text logo
   return (
     <Link
       href="/"

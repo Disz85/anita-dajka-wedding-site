@@ -1,11 +1,11 @@
 'use client';
 
 import React from 'react';
-import { Link } from '@/i18n/navigation';
+import { Link } from '@/i18n/i18n.navigation';
 import { cn } from '@/lib/utils';
-import { Logo } from './logo';
+import { Logo } from './logo.component';
 import type { DesktopMenuProps } from './types/header.types';
-import type { NavLink } from '@/lib/queries/header.queries';
+import type { NavLink } from '@/sanity/queries';
 import { getLocalizedText } from '@/lib/i18n.utils';
 
 const baseLinkClassName =
@@ -24,14 +24,14 @@ const NavItem = ({ item, locale }: { item: NavLink; locale: string }): React.JSX
 
   if (item.isExternal) {
     return (
-      <a href={item.href} target="_blank" rel="noopener noreferrer" className={className}>
+      <a href={item.href || '#'} target="_blank" rel="noopener noreferrer" className={className}>
         {content}
       </a>
     );
   }
 
   return (
-    <Link href={item.href} className={className}>
+    <Link href={item.href || '#'} className={className}>
       {content}
     </Link>
   );

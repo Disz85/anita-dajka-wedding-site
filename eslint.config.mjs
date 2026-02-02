@@ -24,6 +24,8 @@ const eslintConfig = defineConfig([
       ],
       // Allow empty interfaces for declaration merging (needed for next-intl)
       '@typescript-eslint/no-empty-object-type': 'off',
+      // Enforce curly braces for all control statements
+      curly: ['error', 'all'],
     },
   },
   // Override default ignores of eslint-config-next.

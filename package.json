@@ -10,6 +10,7 @@
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
     "typecheck": "tsc --noEmit",
+    "typegen": "sanity typegen generate",
     "prepare": "husky",
     "test": "bun test",
     "release": "standard-version"
@@ -52,6 +53,7 @@
     "lint-staged": "^16.2.7",
     "next-sitemap": "^4.2.3",
     "prettier": "^3.8.1",
+    "sanity": "^5.7.0",
     "standard-version": "^9.5.0",
     "tailwindcss": "^4",
     "typescript": "^5"

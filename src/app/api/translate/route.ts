@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { translateText } from '@/lib/services/translation.service';
+import { translateText } from '@/services/translation/translation.service';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',

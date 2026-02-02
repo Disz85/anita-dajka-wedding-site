@@ -5,8 +5,6 @@
 
 type LocalizedString = {
   [key: string]: string | undefined;
-} & {
-  en: string; // Enforce that 'en' always exists as base fallback
 };
 
 /**
@@ -19,8 +17,19 @@ export const getLocalizedText = (
   obj: LocalizedString | undefined | null,
   locale: string,
 ): string => {
-  if (!obj) {
+  if (obj === null || obj === undefined) {
     return '';
   }
-  return obj[locale] || obj['en'] || '';
+
+  const localizedValue = obj[locale];
+  if (typeof localizedValue === 'string' && localizedValue !== '') {
+    return localizedValue;
+  }
+
+  const englishValue = obj['en'];
+  if (typeof englishValue === 'string' && englishValue !== '') {
+    return englishValue;
+  }
+
+  return '';
 };

@@ -150,3 +150,22 @@ export const menuFooterVariants: Variants = {
     },
   },
 };
+
+/**
+ * Animation for header items (Logo, Hamburger) during mobile menu transition.
+ * They fade out when the "black curtain" drops and fade back in on the white layer.
+ */
+export const headerItemVariants: Variants = {
+  closed: {
+    opacity: 1,
+    transition: { duration: 0.2 },
+  },
+  open: {
+    opacity: [1, 0, 0, 1],
+    transition: {
+      duration: 1.2,
+      times: [0, 0.1, 0.6, 1],
+      ease: 'easeInOut',
+    },
+  },
+};
