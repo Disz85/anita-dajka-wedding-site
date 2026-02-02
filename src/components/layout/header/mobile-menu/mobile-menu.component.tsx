@@ -37,7 +37,7 @@ export const MobileMenu = ({
             initial="initial"
             animate="animate"
             exit="exit"
-            className="md:hidden fixed left-0 top-0 h-screen w-full bg-white text-primary z-[60] flex flex-col"
+            className="xl:hidden fixed left-0 top-0 h-screen w-full bg-white text-primary z-[60] flex flex-col"
           >
             <div className="h-20 flex-shrink-0" aria-hidden="true" />
 

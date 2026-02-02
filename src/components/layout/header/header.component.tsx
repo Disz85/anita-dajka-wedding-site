@@ -8,6 +8,7 @@ import { Hamburger } from './hamburger.component';
 import { MobileMenu } from './mobile-menu/mobile-menu.component';
 import { DesktopMenu } from './desktop-menu.component';
 import { Logo } from './logo.component';
+import { LanguageSwitcher } from '@/components/ui/language-switcher.component';
 import { motion } from 'framer-motion';
 import { urlForImage } from '@/sanity/image';
 import { headerItemVariants } from './animations/mobile-menu.variants';
@@ -34,7 +35,7 @@ export const Header = ({ data, settings, locale }: HeaderProps): React.JSX.Eleme
           initial="closed"
           animate={isOpen ? 'open' : 'closed'}
           variants={headerItemVariants}
-          className="md:hidden relative z-[100]"
+          className="xl:hidden relative z-[100]"
         >
           <Logo variant={isOpen ? 'overlay' : 'default'} logoUrl={logoUrl} logoAlt={logoAlt} />
         </motion.div>
@@ -51,9 +52,12 @@ export const Header = ({ data, settings, locale }: HeaderProps): React.JSX.Eleme
           initial="closed"
           animate={isOpen ? 'open' : 'closed'}
           variants={headerItemVariants}
-          className="md:hidden relative z-[100]"
+          className="xl:hidden relative z-[100]"
         >
-          <Hamburger isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
+          <div className="flex items-center gap-4">
+            <LanguageSwitcher variant="mobile" />
+            <Hamburger isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
+          </div>
         </motion.div>
       </Container>
 

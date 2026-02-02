@@ -4,6 +4,7 @@ import React from 'react';
 import { Link } from '@/i18n/i18n.navigation';
 import { cn } from '@/lib/utils';
 import { Logo } from './logo.component';
+import { LanguageSwitcher } from '@/components/ui/language-switcher.component';
 import type { DesktopMenuProps } from './types/header.types';
 import type { NavLink } from '@/sanity/queries';
 import { getLocalizedText } from '@/lib/i18n.utils';
@@ -45,29 +46,36 @@ export const DesktopMenu = ({
   locale,
 }: DesktopMenuProps): React.JSX.Element => {
   return (
-    <div className="hidden md:flex items-center justify-center w-full gap-8">
-      <nav id="desktop-menu" aria-label="Main Navigation" className="contents">
-        {/* Left navigation */}
-        <ul className="flex items-center gap-6 list-none m-0 p-0 order-1">
-          {leftNavigation.map((item, index) => (
-            <li key={`left-${index}`}>
-              <NavItem item={item} locale={locale} />
-            </li>
-          ))}
-        </ul>
+    <div className="hidden xl:flex items-center w-full">
+      <nav id="desktop-menu" aria-label="Main Navigation" className="flex items-center w-full">
+        <div className="flex-1 flex justify-end pr-8 md:pr-12">
+          <ul className="flex items-center gap-6 list-none m-0 p-0">
+            {leftNavigation.map((item, index) => (
+              <li key={`left-${index}`}>
+                <NavItem item={item} locale={locale} />
+              </li>
+            ))}
+          </ul>
+        </div>
 
-        {/* Right navigation */}
-        <ul className="flex items-center gap-6 list-none m-0 p-0 order-3">
-          {rightNavigation.map((item, index) => (
-            <li key={`right-${index}`}>
-              <NavItem item={item} locale={locale} />
-            </li>
-          ))}
-        </ul>
+        <div className="shrink-0">
+          <Logo logoUrl={logoUrl} logoAlt={logoAlt} />
+        </div>
+
+        <div className="flex-1 flex justify-start items-center gap-6 pl-8 md:pl-12">
+          <ul className="flex items-center gap-6 list-none m-0 p-0">
+            {rightNavigation.map((item, index) => (
+              <li key={`right-${index}`}>
+                <NavItem item={item} locale={locale} />
+              </li>
+            ))}
+          </ul>
+
+          <div className="ml-2">
+            <LanguageSwitcher />
+          </div>
+        </div>
       </nav>
-
-      {/* Centered logo */}
-      <Logo className="order-2" logoUrl={logoUrl} logoAlt={logoAlt} />
     </div>
   );
 };
