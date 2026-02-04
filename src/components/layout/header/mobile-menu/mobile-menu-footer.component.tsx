@@ -4,8 +4,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { Instagram, Facebook } from 'lucide-react';
-import { menuFooterVariants } from '../animations/mobile-menu.variants';
-import type { MobileMenuFooterProps } from '../types/header.types';
+import { menuFooterVariants } from './mobile-menu.variants';
+import type { MobileMenuFooterProps } from './mobile-menu.types';
 
 export const MobileMenuFooter = ({ settings }: MobileMenuFooterProps): React.JSX.Element => {
   const t = useTranslations('contact');

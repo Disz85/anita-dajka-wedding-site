@@ -30,5 +30,15 @@
   "metadata": {
     "title": "Anita Dajka - Wedding Photographer",
     "description": "Professional wedding photography. Capture your most beautiful moments."
+  },
+  "carousel": {
+    "highlights": {
+      "label": "Wedding Highlights Carousel",
+      "roledescription": "carousel",
+      "slideRoledescription": "slide",
+      "slideLabel": "{current} of {total}",
+      "prevLabel": "Previous slide",
+      "nextLabel": "Next slide"
+    }
   }
 }

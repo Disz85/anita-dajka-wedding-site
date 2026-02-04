@@ -7,8 +7,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { siteConfig } from '@/config/site.config';
-import type { LanguageSwitcherProps } from './types/language-switcher.types';
-import { dropdownVariants, iconVariants } from './animations/language-switcher.variants';
+import type { LanguageSwitcherProps } from './language-switcher.types';
+import {
+  dropdownVariants,
+  iconVariants,
+  dropdownTransition,
+  iconTransition,
+} from './language-switcher.variants';
 import { useClickOutside } from '@/hooks/use-click-outside.hook';
 import { useAppLocale } from '@/hooks/use-app-locale.hook';
 
@@ -38,7 +43,11 @@ export const LanguageSwitcher = ({
         aria-expanded={isOpen}
       >
         <span>{locale}</span>
-        <motion.div variants={iconVariants} animate={isOpen ? 'open' : 'closed'}>
+        <motion.div
+          variants={iconVariants}
+          animate={isOpen ? 'open' : 'closed'}
+          transition={iconTransition}
+        >
           <ChevronDown size={14} />
         </motion.div>
       </button>
@@ -50,8 +59,9 @@ export const LanguageSwitcher = ({
             initial="initial"
             animate="animate"
             exit="exit"
+            transition={dropdownTransition}
             className={cn(
-              'absolute top-full mt-2 w-full min-w-[80px] bg-white border border-gray-100 shadow-lg rounded-md overflow-hidden z-[110]',
+              'absolute top-full mt-2 w-full min-w-[80px] bg-white border border-gray-100 shadow-lg rounded-md overflow-hidden z-110',
               'left-1/2 -translate-x-1/2',
             )}
           >

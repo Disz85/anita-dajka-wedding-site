@@ -1,8 +1,8 @@
 import { Variants, Easing } from 'framer-motion';
 
 // Animation Configuration
-const EASE_CUSTOM: Easing = [0.76, 0, 0.24, 1];
-const MENU_ITEM_EASE: Easing = [0.37, 0, 0.63, 1];
+const EASE_CUSTOM = [0.76, 0, 0.24, 1] as const satisfies Easing;
+const MENU_ITEM_EASE = [0.37, 0, 0.63, 1] as const satisfies Easing;
 
 const INTRO_DURATION = 0.6;
 const CONTENT_DELAY = 0.5;
@@ -26,7 +26,7 @@ const STAGGER_DELAY = 0.09;
  * The main white background layer that holds the menu content.
  * It slides down slightly after the black layer to create the layered effect.
  */
-export const menuContentLayerVariants: Variants = {
+export const menuContentLayerVariants = {
   initial: {
     y: '-100%',
   },
@@ -45,13 +45,13 @@ export const menuContentLayerVariants: Variants = {
       ease: EASE_CUSTOM,
     },
   },
-};
+} as const satisfies Variants;
 
 /**
  * The black intro layer that appears first to cover the screen.
  * It serves as a visual transition before the content appears.
  */
-export const menuIntroLayerVariants: Variants = {
+export const menuIntroLayerVariants = {
   initial: {
     y: '-100%',
   },
@@ -68,13 +68,13 @@ export const menuIntroLayerVariants: Variants = {
       duration: 0,
     },
   },
-};
+} as const satisfies Variants;
 
 /**
  * Container for the list of menu links.
  * Orchestrates the staggered entry of individual items.
  */
-export const menuListVariants: Variants = {
+export const menuListVariants = {
   initial: {
     transition: {
       staggerChildren: 0.08,
@@ -93,13 +93,13 @@ export const menuListVariants: Variants = {
       duration: 0,
     },
   },
-};
+} as const satisfies Variants;
 
 /**
  * Animation for individual menu items (links).
  * They fade in and slide up into position.
  */
-export const menuItemVariants: Variants = {
+export const menuItemVariants = {
   initial: {
     y: '30vh',
     opacity: 0,
@@ -123,13 +123,13 @@ export const menuItemVariants: Variants = {
       duration: 0,
     },
   },
-};
+} as const satisfies Variants;
 
 /**
  * Animation for the menu footer (contact info, social links).
  * Appears after all menu items with a fade-in effect.
  */
-export const menuFooterVariants: Variants = {
+export const menuFooterVariants = {
   initial: {
     opacity: 0,
     y: 20,
@@ -149,13 +149,13 @@ export const menuFooterVariants: Variants = {
       duration: 0,
     },
   },
-};
+} as const satisfies Variants;
 
 /**
  * Animation for header items (Logo, Hamburger) during mobile menu transition.
  * They fade out when the "black curtain" drops and fade back in on the white layer.
  */
-export const headerItemVariants: Variants = {
+export const headerItemVariants = {
   closed: {
     opacity: 1,
     transition: { duration: 0.2 },
@@ -168,4 +168,4 @@ export const headerItemVariants: Variants = {
       ease: 'easeInOut',
     },
   },
-};
+} as const satisfies Variants;

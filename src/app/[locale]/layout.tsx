@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { Header } from '@/components/layout/header';
+import { Header } from '@/components/layout/header/header/header.component';
 import { routing } from '@/i18n/i18n.routing';
 import type { Locale } from '@/i18n/i18n.config';
 import { getHeaderData } from '@/data-access/header';

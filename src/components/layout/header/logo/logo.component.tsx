@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Link } from '@/i18n/i18n.navigation';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
-import type { LogoProps } from './types/header.types';
+import type { LogoProps } from './logo.types';
 
 export const Logo = ({
   className,
@@ -27,7 +27,8 @@ export const Logo = ({
           alt={logoAlt || t('siteName')}
           width={160}
           height={40}
-          className="h-10 w-auto object-contain"
+          className="h-10 object-contain"
+          style={{ width: 'auto', height: 'auto', maxHeight: '2.5rem' }}
           priority
         />
       </Link>

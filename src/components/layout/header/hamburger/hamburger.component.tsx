@@ -4,12 +4,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
-import { HamburgerProps } from './types/header.types';
-import {
-  topLineVariants,
-  middleLineVariants,
-  bottomLineVariants,
-} from './animations/hamburger.variants';
+import { HamburgerProps } from './hamburger.types';
+import { topLineVariants, middleLineVariants, bottomLineVariants } from './hamburger.variants';
 
 export const Hamburger = ({ isOpen, onClick, className }: HamburgerProps): React.JSX.Element => {
   const t = useTranslations('navigation');
@@ -23,7 +19,7 @@ export const Hamburger = ({ isOpen, onClick, className }: HamburgerProps): React
       aria-expanded={isOpen}
       aria-controls="mobile-menu"
       className={cn(
-        'group relative z-[100] flex items-center gap-3 text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
+        'group relative z-100 flex items-center gap-3 text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
         className,
       )}
     >
@@ -35,17 +31,17 @@ export const Hamburger = ({ isOpen, onClick, className }: HamburgerProps): React
         <motion.span
           variants={topLineVariants}
           animate={variantState}
-          className="block h-[1px] bg-current transition-colors"
+          className="block h-px bg-current transition-colors"
         />
         <motion.span
           variants={middleLineVariants}
           animate={variantState}
-          className="block h-[1px] bg-current transition-colors"
+          className="block h-px bg-current transition-colors"
         />
         <motion.span
           variants={bottomLineVariants}
           animate={variantState}
-          className="block h-[1px] bg-current transition-colors"
+          className="block h-px bg-current transition-colors"
         />
       </div>
     </button>

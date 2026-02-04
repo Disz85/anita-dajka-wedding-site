@@ -32,5 +32,15 @@
   "metadata": {
     "title": "Anita Dajka - Esküvői Fotós",
     "description": "Professzionális esküvői fotózás. Örökítsd meg a legszebb pillanatokat."
+  },
+  "carousel": {
+    "highlights": {
+      "label": "Esküvői pillanatok galéria",
+      "roledescription": "galéria",
+      "slideRoledescription": "dia",
+      "slideLabel": "{current}. kép, összesen {total}",
+      "prevLabel": "Előző dia",
+      "nextLabel": "Következő dia"
+    }
   }
 }

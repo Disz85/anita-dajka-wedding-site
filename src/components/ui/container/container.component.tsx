@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import { ContainerProps } from './types';
+import { ContainerProps } from './container.types';
 
 export function Container({ children, className, ...props }: ContainerProps) {
   return (

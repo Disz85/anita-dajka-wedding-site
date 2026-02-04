@@ -44,3 +44,22 @@ body {
 .font-body {
   font-family: var(--font-cormorant), serif;
 }
+
+@layer utilities {
+  /* Design System: Fluid Typography (Standard 16px base rem) */
+  .text-fluid-h2 {
+    font-size: clamp(1.625rem, 4.5vw, 4.0625rem); /* 26px - 65px */
+  }
+
+  .text-fluid-subtitle {
+    font-size: clamp(0.625rem, 1.25vw, 0.75rem); /* 10px - 12px */
+  }
+
+  .header-overlap {
+    position: relative;
+    z-index: 1;
+    @media (min-width: 768px) {
+      transform: translateY(30%);
+    }
+  }
+}

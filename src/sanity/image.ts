@@ -1,4 +1,4 @@
-import createImageUrlBuilder from '@sanity/image-url';
+import { createImageUrlBuilder } from '@sanity/image-url';
 import { dataset, projectId } from './client';
 
 // Define the type locally to avoid deep import issues with @sanity/image-url
