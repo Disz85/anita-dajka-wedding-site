@@ -1,6 +1,7 @@
 import { setRequestLocale } from 'next-intl/server';
 import { getSiteSettings } from '@/data-access/settings';
 import { getHomeHighlights } from '@/data-access/home';
+import { Hero } from '@/components/sections/hero/hero.component';
 import { Highlights } from '@/components/sections/highlights/highlights.component';
 
 type Props = {
@@ -14,10 +15,11 @@ export default async function Home({ params }: Props) {
   setRequestLocale(locale);
 
   // Fetch data using Data Access Layer
-  const [settings, homeData] = await Promise.all([getSiteSettings(), getHomeHighlights()]);
+  const [, homeData] = await Promise.all([getSiteSettings(), getHomeHighlights()]);
 
   return (
     <main className="min-h-screen">
+      <Hero data={homeData?.heroSection} />
       <Highlights data={homeData?.highlightsSection} />
     </main>
   );

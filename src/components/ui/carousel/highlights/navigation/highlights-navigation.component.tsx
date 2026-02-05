@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { HighlightsNavigationProps } from './highlights-carousel.types';
+import { HighlightsNavigationProps } from '../carousel/highlights-carousel.types';
 import {
   LongArrowLeft,
   LongArrowRight,
@@ -20,7 +20,6 @@ import { useTranslations } from 'next-intl';
 const NavButton = ({
   onClick,
   direction,
-  label,
 }: {
   onClick: () => void;
   direction: 'left' | 'right';

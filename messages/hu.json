@@ -41,6 +41,12 @@
       "slideLabel": "{current}. kép, összesen {total}",
       "prevLabel": "Előző dia",
       "nextLabel": "Következő dia"
+    },
+    "hero": {
+      "label": "Hero képek slideshow",
+      "roledescription": "slideshow",
+      "slideRoledescription": "dia",
+      "slideLabel": "{current}. kép, összesen {total}"
     }
   }
 }

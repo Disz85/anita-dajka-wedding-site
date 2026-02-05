@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { HighlightsSlideProps } from '../carousel/highlights-carousel.types';
 import { CAROUSEL_STYLES, ORIENTATION_STYLES } from '../carousel/highlights-carousel.config';

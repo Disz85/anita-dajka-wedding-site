@@ -1,7 +1,40 @@
 import { groq } from 'next-sanity';
 
-export const homeHighlightsQuery = groq`
+export const homePageQuery = groq`
   *[_type == "home"][0] {
+    heroSection {
+      title {
+        hu,
+        en
+      },
+      subtitle {
+        hu,
+        en
+      },
+      items[] {
+        _key,
+        image {
+          asset-> {
+            url,
+            metadata {
+              lqip
+            }
+          }
+        },
+        title {
+          hu,
+          en
+        },
+        subtitle {
+          hu,
+          en
+        },
+        alt {
+          hu,
+          en
+        }
+      }
+    },
     highlightsSection {
       title {
         hu,
@@ -45,11 +78,37 @@ export const homeHighlightsQuery = groq`
   }
 `;
 
+// Keep the old export for backwards compatibility
+export const homeHighlightsQuery = homePageQuery;
+
 export type LocalizedString = {
   hu?: string;
   en?: string;
 };
 
+// Hero Section Types
+export type SanityHeroItem = {
+  _key: string;
+  image: {
+    asset: {
+      url: string;
+      metadata: {
+        lqip?: string;
+      };
+    };
+  };
+  title?: LocalizedString;
+  subtitle?: LocalizedString;
+  alt: LocalizedString;
+};
+
+export type HeroSectionData = {
+  title: LocalizedString;
+  subtitle: LocalizedString;
+  items: SanityHeroItem[];
+};
+
+// Highlights Section Types
 export type SanityHighlightItem = {
   image: {
     asset: {
@@ -75,6 +134,11 @@ export type HighlightsSectionData = {
   items: SanityHighlightItem[];
 };
 
-export type HomeHighlightsResponse = {
+// Combined Response Type
+export type HomePageResponse = {
+  heroSection: HeroSectionData;
   highlightsSection: HighlightsSectionData;
 };
+
+// Keep the old export for backwards compatibility
+export type HomeHighlightsResponse = HomePageResponse;

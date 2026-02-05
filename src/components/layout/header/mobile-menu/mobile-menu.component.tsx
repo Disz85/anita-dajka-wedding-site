@@ -34,9 +34,9 @@ export const MobileMenu = ({
             initial="initial"
             animate="animate"
             exit="exit"
-            className="xl:hidden fixed left-0 top-0 h-screen w-full bg-white text-primary z-60 flex flex-col"
+            className="fixed left-0 top-0 h-screen w-full bg-white text-primary z-60 flex flex-col"
           >
-            <div className="h-20 shrink-0" aria-hidden="true" />
+            <div className="h-20 shrink-0" />
 
             <div className="flex-1 overflow-y-auto overscroll-y-contain touch-pan-y">
               <Container className="flex min-h-full flex-col justify-between pb-10 pt-4">

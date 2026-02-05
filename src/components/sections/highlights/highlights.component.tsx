@@ -35,7 +35,7 @@ export const Highlights = ({ data }: { data?: HighlightsSectionData }) => {
   });
 
   return (
-    <section className="w-full py-20 bg-white overflow-hidden">
+    <section className="w-full py-10 bg-white overflow-hidden">
       {currentTitle && (
         <SectionHeader
           title={currentTitle}

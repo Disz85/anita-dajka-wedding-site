@@ -39,6 +39,12 @@
       "slideLabel": "{current} of {total}",
       "prevLabel": "Previous slide",
       "nextLabel": "Next slide"
+    },
+    "hero": {
+      "label": "Hero image slideshow",
+      "roledescription": "slideshow",
+      "slideRoledescription": "slide",
+      "slideLabel": "{current} of {total}"
     }
   }
 }

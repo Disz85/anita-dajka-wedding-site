@@ -21,7 +21,7 @@ class TranslationService {
     try {
       const displayNames = new Intl.DisplayNames(['en'], { type: 'language' });
       return displayNames.of(locale) ?? locale;
-    } catch (error) {
+    } catch {
       return locale;
     }
   }

@@ -14,8 +14,8 @@ import {
   dropdownTransition,
   iconTransition,
 } from './language-switcher.variants';
-import { useClickOutside } from '@/hooks/use-click-outside.hook';
-import { useAppLocale } from '@/hooks/use-app-locale.hook';
+import { useClickOutside } from '@/hooks/use-click-outside/use-click-outside.hook';
+import { useAppLocale } from '@/hooks/use-app-locale/use-app-locale.hook';
 
 export const LanguageSwitcher = ({
   className,
