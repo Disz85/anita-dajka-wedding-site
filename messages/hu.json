@@ -46,7 +46,9 @@
       "label": "Hero képek slideshow",
       "roledescription": "slideshow",
       "slideRoledescription": "dia",
-      "slideLabel": "{current}. kép, összesen {total}"
+      "slideLabel": "{current}. kép, összesen {total}",
+      "pause": "Slideshow szüneteltetése",
+      "play": "Slideshow indítása"
     }
   }
 }

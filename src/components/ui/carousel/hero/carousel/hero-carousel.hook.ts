@@ -2,22 +2,31 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { EmblaCarouselType } from 'embla-carousel';
 import { AUTOPLAY_OPTIONS } from './hero-carousel.config';
 
-export const useHeroAutoplay = (emblaApi: EmblaCarouselType | undefined) => {
+export const useHeroAutoplay = (
+  emblaApi: EmblaCarouselType | undefined,
+  isPaused: boolean = false,
+) => {
   const [isTextVisible, setIsTextVisible] = useState(true);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const transitionTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  const startAutoplay = useCallback(() => {
-    if (!emblaApi) {
-      return;
-    }
-
+  const clearTimers = useCallback(() => {
     if (timerRef.current) {
       clearTimeout(timerRef.current);
+      timerRef.current = null;
     }
     if (transitionTimerRef.current) {
       clearTimeout(transitionTimerRef.current);
+      transitionTimerRef.current = null;
     }
+  }, []);
+
+  const startAutoplay = useCallback(() => {
+    if (!emblaApi || isPaused) {
+      return;
+    }
+
+    clearTimers();
 
     timerRef.current = setTimeout(() => {
       // 1. Text exit
@@ -33,7 +42,16 @@ export const useHeroAutoplay = (emblaApi: EmblaCarouselType | undefined) => {
         emblaApi.scrollNext();
       }, 600);
     }, AUTOPLAY_OPTIONS.delay);
-  }, [emblaApi]);
+  }, [emblaApi, isPaused, clearTimers]);
+
+  // Handle pause state changes
+  useEffect(() => {
+    if (isPaused) {
+      clearTimers();
+    } else if (emblaApi) {
+      startAutoplay();
+    }
+  }, [isPaused, emblaApi, clearTimers, startAutoplay]);
 
   useEffect(() => {
     if (!emblaApi) {
@@ -42,31 +60,36 @@ export const useHeroAutoplay = (emblaApi: EmblaCarouselType | undefined) => {
 
     const onSelect = () => {
       setIsTextVisible(true);
-      startAutoplay();
+      if (!isPaused) {
+        startAutoplay();
+      }
     };
 
     const stop = () => {
-      if (timerRef.current) {
-        clearTimeout(timerRef.current);
-      }
-      if (transitionTimerRef.current) {
-        clearTimeout(transitionTimerRef.current);
+      clearTimers();
+    };
+
+    const resume = () => {
+      if (!isPaused) {
+        startAutoplay();
       }
     };
 
     emblaApi.on('select', onSelect);
     emblaApi.on('pointerDown', stop);
-    emblaApi.on('pointerUp', startAutoplay);
+    emblaApi.on('pointerUp', resume);
 
-    startAutoplay();
+    if (!isPaused) {
+      startAutoplay();
+    }
 
     return () => {
-      stop();
+      clearTimers();
       emblaApi.off('select', onSelect);
       emblaApi.off('pointerDown', stop);
-      emblaApi.off('pointerUp', startAutoplay);
+      emblaApi.off('pointerUp', resume);
     };
-  }, [emblaApi, startAutoplay]);
+  }, [emblaApi, isPaused, startAutoplay, clearTimers]);
 
   return isTextVisible;
 };

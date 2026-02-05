@@ -25,9 +25,8 @@ export const Hero = ({ data }: { data?: HeroSectionData }) => {
   }));
 
   return (
-    <section className="relative w-full aspect-video md:aspect-none md:h-screen overflow-hidden mt-20 xl:mt-0">
+    <section className="relative w-full aspect-video xl:aspect-none xl:h-[calc(100vh-5rem)] overflow-hidden mt-20 xl:mt-0 px-0">
       <HeroCarousel items={mappedItems} />
-      <div className="absolute inset-0 pointer-events-none hero-vignette" />
     </section>
   );
 };

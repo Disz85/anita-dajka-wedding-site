@@ -44,7 +44,9 @@
       "label": "Hero image slideshow",
       "roledescription": "slideshow",
       "slideRoledescription": "slide",
-      "slideLabel": "{current} of {total}"
+      "slideLabel": "{current} of {total}",
+      "pause": "Pause slideshow",
+      "play": "Play slideshow"
     }
   }
 }

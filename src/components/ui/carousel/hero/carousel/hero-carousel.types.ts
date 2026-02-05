@@ -16,4 +16,5 @@ export type HeroSlideProps = {
   index: number;
   total: number;
   isActive?: boolean;
+  isFirst: boolean;
 };

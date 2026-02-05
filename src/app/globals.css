@@ -63,17 +63,6 @@ body {
     }
   }
 
-  /* Hero Section Utilities */
-  .hero-vignette {
-    background: linear-gradient(
-      to bottom,
-      rgba(200, 210, 230, 0.4) 0%,
-      transparent 15%,
-      transparent 85%,
-      rgba(200, 210, 230, 0.4) 100%
-    );
-  }
-
   .text-fluid-hero-title {
     font-size: clamp(2.5rem, 8vw, 6.625rem); /* 40px - 106px */
   }
