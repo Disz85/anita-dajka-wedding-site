@@ -5,7 +5,6 @@ import { Hero } from '@/components/sections/hero/hero.component';
 import { Introduction } from '@/components/sections/introduction/introduction.component';
 import { Highlights } from '@/components/sections/highlights/highlights.component';
 import { Video } from '@/components/sections/video/video.component';
-
 import { Testimonials } from '@/components/sections/testimonials/testimonials.component';
 
 type Props = {
@@ -24,10 +23,10 @@ export default async function Home({ params }: Props) {
   return (
     <main className="min-h-screen">
       <Hero data={homeData?.heroSection} />
-      <Introduction data={homeData?.introductionSection} />
-      <Testimonials data={homeData?.testimonialsSection} />
       <Highlights data={homeData?.highlightsSection} />
       <Video data={homeData?.videoSection} />
+      <Introduction data={homeData?.introductionSection} />
+      <Testimonials data={homeData?.testimonialsSection} />
     </main>
   );
 }

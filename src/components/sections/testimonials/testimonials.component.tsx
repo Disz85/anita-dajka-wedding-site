@@ -5,15 +5,14 @@ import { Container } from '@/components/ui/container/container.component';
 import { Section } from '@/components/ui/section/section.component';
 import { TestimonialsSectionData } from '@/sanity/queries/home.queries';
 import { TestimonialsCarousel } from './components/carousel/testimonials-carousel.component';
-
-type TestimonialsProps = {
-  data?: TestimonialsSectionData;
-};
+import { TestimonialsProps } from './testimonials.types';
 
 export const Testimonials = ({ data }: TestimonialsProps) => {
   const locale = useLocale();
 
-  if (!data) {return null;}
+  if (!data) {
+    return null;
+  }
 
   const { testimonials } = data;
 

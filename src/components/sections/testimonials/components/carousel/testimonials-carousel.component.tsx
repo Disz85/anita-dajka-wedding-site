@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import Fade from 'embla-carousel-fade';
@@ -8,11 +7,7 @@ import { SanityTestimonial } from '@/sanity/queries/home.queries';
 import { getLocalizedValue } from '@/lib/sanity-utils';
 import { useLocale } from 'next-intl';
 import { Typography } from '@/components/ui/typography/typography.component';
-import { cn } from '@/lib/utils';
-
-type TestimonialsCarouselProps = {
-  testimonials: SanityTestimonial[];
-};
+import { TestimonialsCarouselProps } from './testimonials-carousel.types';
 
 export const TestimonialsCarousel = ({ testimonials }: TestimonialsCarouselProps) => {
   const locale = useLocale();
@@ -21,14 +16,18 @@ export const TestimonialsCarousel = ({ testimonials }: TestimonialsCarouselProps
     Fade(),
   ]);
 
-  if (!testimonials || testimonials.length === 0) {return null;}
+  if (!testimonials || testimonials.length === 0) {
+    return null;
+  }
 
   return (
     <div className="overflow-hidden w-full max-w-[800px] mx-auto px-4" ref={emblaRef}>
       <div className="flex touch-pan-y">
         {testimonials.map((testimonial, index) => {
           const text = getLocalizedValue(testimonial.text, locale);
-          if (!text) {return null;}
+          if (!text) {
+            return null;
+          }
 
           return (
             <div key={index} className="flex-[0_0_100%] min-w-0 relative">
