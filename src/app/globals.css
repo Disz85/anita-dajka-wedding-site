@@ -54,6 +54,7 @@
   --ring: #434343;
 
   --radius: 0.5rem;
+  --warm-white: #faf5f1;
 }
 
 @media (prefers-color-scheme: dark) {
