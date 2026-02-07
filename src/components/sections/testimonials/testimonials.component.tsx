@@ -17,7 +17,7 @@ export const Testimonials = ({ data }: TestimonialsProps) => {
   const { testimonials } = data;
 
   return (
-    <Section className="bg-warm-white py-20 md:py-32" aria-label={t('sectionLabel')}>
+    <Section spacing="sm" background="warm-white" aria-label={t('sectionLabel')}>
       <Container size="narrow" className="flex flex-col items-center">
         <TestimonialsCarousel testimonials={testimonials} />
       </Container>

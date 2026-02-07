@@ -14,6 +14,7 @@ export const sectionVariants = cva('w-full', {
       accent: 'bg-accent',
       primary: 'bg-primary text-primary-foreground',
       secondary: 'bg-secondary text-secondary-foreground',
+      'warm-white': 'bg-warm-white',
     },
     container: {
       true: '',
