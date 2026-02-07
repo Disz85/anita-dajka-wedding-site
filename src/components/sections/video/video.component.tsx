@@ -25,7 +25,7 @@ export const Video = ({ data }: { data?: VideoSectionData }) => {
     return null;
   }
 
-  const { title, subtitle, description, video, poster, posterAlt } = data;
+  const { title, description, video, poster, posterAlt } = data;
 
   const currentTitle = getLocalizedValue(title, locale);
 
@@ -77,11 +77,7 @@ export const Video = ({ data }: { data?: VideoSectionData }) => {
             </Typography>
           )}
           {currentDescription && (
-            <Typography
-              variant="p"
-              tone="white"
-              className="font-sans text-base md:text-lg opacity-80 leading-relaxed max-w-lg"
-            >
+            <Typography variant="p" tone="white" className="font-light leading-6 max-w-lg">
               {currentDescription}
             </Typography>
           )}

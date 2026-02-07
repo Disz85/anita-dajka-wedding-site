@@ -4,7 +4,7 @@ import React from 'react';
 import { Link } from '@/i18n/i18n.navigation';
 import { cn } from '@/lib/utils';
 import { Logo } from '../logo/logo.component';
-import { LanguageSwitcher } from '@/components/ui/language-switcher/language-switcher.component';
+import { LanguageSwitcher } from '@/components/layout/header/language-switcher/language-switcher.component';
 import type { DesktopMenuProps } from './desktop-menu.types';
 import type { NavLink } from '@/sanity/queries';
 import { getLocalizedText } from '@/lib/i18n.utils';

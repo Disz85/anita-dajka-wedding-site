@@ -1,11 +1,9 @@
 'use client';
 
 import { useLocale } from 'next-intl';
-import { HighlightsCarousel } from '@/components/ui/carousel/highlights/carousel/highlights-carousel.component';
-import { SectionHeader } from '@/components/ui/section-header/section-header.component';
-import { SectionDescription } from '@/components/ui/section-description/section-description.component';
+import { HighlightsCarousel } from '@/components/sections/highlights/components/carousel/highlights-carousel.component';
 import { Section } from '@/components/ui/section/section.component';
-import { HighlightItem } from '@/components/ui/carousel/highlights/carousel/highlights-carousel.types';
+import { HighlightItem } from '@/components/sections/highlights/components/carousel/highlights-carousel.types';
 import { HighlightsSectionData, SanityHighlightItem } from '@/sanity/queries/home.queries';
 import { getLocalizedValue } from '@/lib/sanity-utils';
 
@@ -42,7 +40,7 @@ export const Highlights = ({ data }: HighlightsProps) => {
   return (
     <Section spacing="sm" background="default" className="overflow-hidden">
       {currentTitle && (
-        <SectionHeader
+        <Section.Header
           title={currentTitle}
           subtitle={currentSubtitle}
           subtitleTag="h3"
@@ -50,7 +48,7 @@ export const Highlights = ({ data }: HighlightsProps) => {
         />
       )}
       <HighlightsCarousel items={mappedItems} />
-      {currentDescription && <SectionDescription>{currentDescription}</SectionDescription>}
+      {currentDescription && <Section.Description>{currentDescription}</Section.Description>}
     </Section>
   );
 };

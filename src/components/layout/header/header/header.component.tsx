@@ -8,7 +8,7 @@ import { Hamburger } from '../hamburger/hamburger.component';
 import { MobileMenu } from '../mobile-menu/mobile-menu.component';
 import { DesktopMenu } from '../desktop-menu/desktop-menu.component';
 import { Logo } from '../logo/logo.component';
-import { LanguageSwitcher } from '@/components/ui/language-switcher/language-switcher.component';
+import { LanguageSwitcher } from '@/components/layout/header/language-switcher/language-switcher.component';
 import { motion, AnimatePresence } from 'framer-motion';
 import { urlForImage } from '@/sanity/image';
 import { useScrollDirection } from '@/hooks/use-scroll-direction/use-scroll-direction.hook';

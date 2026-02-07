@@ -1,9 +1,9 @@
 'use client';
 
 import { useLocale } from 'next-intl';
-import { HeroCarousel } from '@/components/ui/carousel/hero/carousel/hero-carousel.component';
+import { HeroCarousel } from '@/components/sections/hero/components/carousel/hero-carousel.component';
 import { Section } from '@/components/ui/section/section.component';
-import { HeroItem } from '@/components/ui/carousel/hero/carousel/hero-carousel.types';
+import { HeroItem } from '@/components/sections/hero/components/carousel/hero-carousel.types';
 import { HeroSectionData, SanityHeroItem } from '@/sanity/queries/home.queries';
 import { getLocalizedValue } from '@/lib/sanity-utils';
 

@@ -2,8 +2,10 @@ import { cn } from '@/lib/utils';
 import React from 'react';
 import { SectionProps } from './section.types';
 import { sectionVariants } from './section.variants';
+import { SectionHeader } from './components/header/section-header.component';
+import { SectionDescription } from './components/description/section-description.component';
 
-export const Section = React.forwardRef<HTMLElement, SectionProps>(
+export const SectionRoot = React.forwardRef<HTMLElement, SectionProps>(
   ({ className, spacing, background, as: Component = 'section', children, ...props }, ref) => {
     return (
       <Component
@@ -16,4 +18,10 @@ export const Section = React.forwardRef<HTMLElement, SectionProps>(
     );
   },
 );
-Section.displayName = 'Section';
+
+SectionRoot.displayName = 'Section';
+
+export const Section = Object.assign(SectionRoot, {
+  Header: SectionHeader,
+  Description: SectionDescription,
+});
