@@ -1,13 +1,13 @@
 'use client';
 
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { Container } from '@/components/ui/container/container.component';
 import { Section } from '@/components/ui/section/section.component';
-import { TestimonialsSectionData } from '@/sanity/queries/home.queries';
 import { TestimonialsCarousel } from './components/carousel/testimonials-carousel.component';
 import { TestimonialsProps } from './testimonials.types';
 
 export const Testimonials = ({ data }: TestimonialsProps) => {
+  const t = useTranslations('testimonials');
   const locale = useLocale();
 
   if (!data) {
@@ -17,7 +17,7 @@ export const Testimonials = ({ data }: TestimonialsProps) => {
   const { testimonials } = data;
 
   return (
-    <Section className="bg-muted/30 py-20 md:py-32" aria-label="Testimonials">
+    <Section aria-label={t('sectionLabel')}>
       <Container size="narrow" className="flex flex-col items-center">
         <TestimonialsCarousel testimonials={testimonials} />
       </Container>

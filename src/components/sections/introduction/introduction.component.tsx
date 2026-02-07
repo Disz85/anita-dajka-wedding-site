@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { motion, useReducedMotion } from 'framer-motion';
 import { useId } from 'react';
 import { Container } from '@/components/ui/container/container.component';
@@ -15,6 +15,7 @@ import { animationVariants, textVariants } from './introduction.variants';
 import { IntroductionProps } from './introduction.types';
 
 export const Introduction = ({ data }: IntroductionProps) => {
+  const t = useTranslations('introduction');
   const locale = useLocale();
   const sectionId = useId();
   const shouldReduceMotion = useReducedMotion();
@@ -43,6 +44,7 @@ export const Introduction = ({ data }: IntroductionProps) => {
     <Section
       className="overflow-hidden"
       aria-labelledby={currentTitle ? `${sectionId}-title` : undefined}
+      aria-label={!currentTitle ? t('sectionLabel') : undefined}
     >
       {currentTitle && (
         <Section.Header

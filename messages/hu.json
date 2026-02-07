@@ -53,5 +53,17 @@
   },
   "video": {
     "sectionLabel": "Bemutató videó"
+  },
+  "testimonials": {
+    "sectionLabel": "Kedves szavak"
+  },
+  "highlights": {
+    "sectionLabel": "Kiemelt munkák"
+  },
+  "introduction": {
+    "sectionLabel": "Bemutatkozás"
+  },
+  "hero": {
+    "sectionLabel": "Hero szekció"
   }
 }

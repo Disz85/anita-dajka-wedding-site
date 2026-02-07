@@ -1,6 +1,6 @@
 'use client';
 
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { HighlightsCarousel } from '@/components/sections/highlights/components/carousel/highlights-carousel.component';
 import { Section } from '@/components/ui/section/section.component';
 import { HighlightItem } from '@/components/sections/highlights/components/carousel/highlights-carousel.types';
@@ -12,6 +12,7 @@ interface HighlightsProps {
 }
 
 export const Highlights = ({ data }: HighlightsProps) => {
+  const t = useTranslations('highlights');
   const locale = useLocale();
 
   if (data?.items === undefined || data?.items === null) {
@@ -38,7 +39,12 @@ export const Highlights = ({ data }: HighlightsProps) => {
   });
 
   return (
-    <Section spacing="sm" background="default" className="overflow-hidden">
+    <Section
+      spacing="sm"
+      background="default"
+      className="overflow-hidden"
+      aria-label={t('sectionLabel')}
+    >
       {currentTitle && (
         <Section.Header
           title={currentTitle}

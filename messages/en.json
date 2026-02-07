@@ -51,5 +51,17 @@
   },
   "video": {
     "sectionLabel": "Video showcase"
+  },
+  "testimonials": {
+    "sectionLabel": "Kind Words"
+  },
+  "highlights": {
+    "sectionLabel": "Selected Works"
+  },
+  "introduction": {
+    "sectionLabel": "Introduction"
+  },
+  "hero": {
+    "sectionLabel": "Hero section"
   }
 }

@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useReducedMotion } from '@/hooks/use-reduced-motion/use-reduced-motion.hook';
@@ -11,6 +11,7 @@ import { Typography } from '@/components/ui/typography/typography.component';
 import { Section } from '@/components/ui/section/section.component';
 
 export const Video = ({ data }: { data?: VideoSectionData }) => {
+  const t = useTranslations('video');
   const locale = useLocale();
   const prefersReducedMotion = useReducedMotion();
   const containerRef = useRef<HTMLElement>(null);
@@ -41,7 +42,7 @@ export const Video = ({ data }: { data?: VideoSectionData }) => {
       ref={containerRef}
       spacing="none"
       className="relative h-[70vw] max-h-[600px] overflow-hidden"
-      aria-label={currentTitle ?? 'Video showcase'}
+      aria-label={currentTitle ?? t('sectionLabel')}
     >
       <motion.div style={{ y }} className="absolute inset-0 w-full h-[120%] -top-[10%]">
         {prefersReducedMotion ? (
