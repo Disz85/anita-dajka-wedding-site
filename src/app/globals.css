@@ -27,6 +27,9 @@
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
+
+  /* Colors */
+  --color-warm-white: #faf5f1;
 }
 
 /* Base Tokens */
@@ -54,7 +57,6 @@
   --ring: #434343;
 
   --radius: 0.5rem;
-  --warm-white: #faf5f1;
 }
 
 @media (prefers-color-scheme: dark) {

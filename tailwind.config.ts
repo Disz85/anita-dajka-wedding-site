@@ -34,7 +34,6 @@ const config: Config = {
         border: 'var(--border)',
         input: 'var(--input)',
         ring: 'var(--ring)',
-        'warm-white': 'var(--warm-white)',
       },
       fontFamily: {
         heading: ['var(--font-cormorant)', 'serif'],
