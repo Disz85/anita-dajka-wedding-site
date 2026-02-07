@@ -6,9 +6,10 @@ import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useReducedMotion } from '@/hooks/use-reduced-motion/use-reduced-motion.hook';
 import { VideoSectionData } from '@/sanity/queries/home.queries';
-import { getLocalizedValue } from '@/lib/sanity-utils';
+import { getLocalizedValue, toPlainText } from '@/lib/sanity-utils';
 import { Typography } from '@/components/ui/typography/typography.component';
 import { Section } from '@/components/ui/section/section.component';
+import { CustomPortableText } from '@/components/ui/typography/portable-text.component';
 
 export const Video = ({ data }: { data?: VideoSectionData }) => {
   const t = useTranslations('video');
@@ -31,7 +32,7 @@ export const Video = ({ data }: { data?: VideoSectionData }) => {
   const currentTitle = getLocalizedValue(title, locale);
 
   const currentDescription = getLocalizedValue(description, locale);
-  const currentPosterAlt = getLocalizedValue(posterAlt, locale) ?? currentTitle ?? '';
+  const currentPosterAlt = getLocalizedValue(posterAlt, locale);
 
   const videoUrl = video.asset.url;
   const posterUrl = poster.asset.url;
@@ -42,13 +43,18 @@ export const Video = ({ data }: { data?: VideoSectionData }) => {
       ref={containerRef}
       spacing="none"
       className="relative h-[70vw] max-h-[600px] overflow-hidden"
-      aria-label={currentTitle ?? t('sectionLabel')}
+      aria-label={
+        currentTitle && Array.isArray(currentTitle) ? toPlainText(currentTitle) : t('sectionLabel')
+      }
     >
       <motion.div style={{ y }} className="absolute inset-0 w-full h-[120%] -top-[10%]">
         {prefersReducedMotion ? (
           <Image
             src={posterUrl}
-            alt={currentPosterAlt}
+            alt={
+              currentPosterAlt ??
+              (currentTitle && Array.isArray(currentTitle) ? toPlainText(currentTitle) : '')
+            }
             fill
             className="object-cover"
             placeholder={posterLqip ? 'blur' : 'empty'}
@@ -70,17 +76,39 @@ export const Video = ({ data }: { data?: VideoSectionData }) => {
         )}
       </motion.div>
 
-      <div className="absolute inset-0 z-10 flex flex-col justify-center px-8 md:px-16 lg:px-24">
-        <div className="max-w-4xl">
+      <div className="absolute inset-0 z-10 flex flex-col justify-center items-center px-8 md:px-16 lg:px-24 text-center md:text-left">
+        <div className="max-w-4xl w-full">
           {currentTitle && (
-            <Typography variant="videoTitle" tone="white" className="mb-6 whitespace-pre-wrap">
-              {currentTitle}
-            </Typography>
+            <div className="mb-6 video-title">
+              <CustomPortableText
+                value={currentTitle}
+                components={{
+                  block: {
+                    normal: ({ children }) => (
+                      <Typography variant="videoTitle" tone="white" className="mb-2 last:mb-0">
+                        {children}
+                      </Typography>
+                    ),
+                  },
+                }}
+              />
+            </div>
           )}
           {currentDescription && (
-            <Typography variant="p" tone="white" className="font-light leading-6 max-w-lg">
-              {currentDescription}
-            </Typography>
+            <div className="font-light leading-6 max-w-lg mx-auto md:mx-0">
+              <CustomPortableText
+                value={currentDescription}
+                components={{
+                  block: {
+                    normal: ({ children }) => (
+                      <Typography variant="p" tone="white" className="mb-4 last:mb-0">
+                        {children}
+                      </Typography>
+                    ),
+                  },
+                }}
+              />
+            </div>
           )}
         </div>
       </div>

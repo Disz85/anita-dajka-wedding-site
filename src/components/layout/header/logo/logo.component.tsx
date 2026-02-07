@@ -27,8 +27,7 @@ export const Logo = ({
           alt={logoAlt || t('siteName')}
           width={160}
           height={40}
-          className="h-10 object-contain"
-          style={{ width: 'auto', height: 'auto', maxHeight: '2.5rem' }}
+          className="h-10 w-auto object-contain"
           priority
         />
       </Link>

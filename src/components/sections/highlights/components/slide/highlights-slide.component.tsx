@@ -53,7 +53,6 @@ export const HighlightsSlide = ({ item, index, total }: HighlightsSlideProps) =>
               fill
               className="object-cover embla__parallax__img w-[150%] h-[150%] max-w-none -left-[25%] -top-[25%] will-change-transform"
               sizes="(max-width: 768px) 130vw, (max-width: 1200px) 70vw, 800px"
-              priority={index < 2}
               placeholder={item.blurDataURL ? 'blur' : 'empty'}
               blurDataURL={item.blurDataURL}
               onLoad={() => setIsLoaded(true)}

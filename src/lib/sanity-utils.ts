@@ -1,4 +1,5 @@
 import { LocalizedString } from '@/sanity/queries/home.queries';
+import type { PortableTextBlock } from 'next-sanity';
 
 /**
  * Safely extracts a localized value from a Sanity object.
@@ -12,13 +13,38 @@ export const getLocalizedValue = <T>(
     return undefined;
   }
 
+  const { hu, en } = value;
+
   if (locale === 'hu') {
-    return value.hu ?? value.en;
+    return hu ?? en;
   }
 
   if (locale === 'en') {
-    return value.en ?? value.hu;
+    return en ?? hu;
   }
 
-  return value.hu ?? value.en;
+  return hu ?? en;
+};
+
+export const toPlainText = (blocks: PortableTextBlock[] = []): string => {
+  if (!blocks) {
+    return '';
+  }
+
+  return blocks
+    .map((block) => {
+      if (block._type !== 'block' || !block.children) {
+        return '';
+      }
+
+      return block.children
+        .map((child) => {
+          if ('text' in child && typeof child.text === 'string') {
+            return child.text;
+          }
+          return '';
+        })
+        .join('');
+    })
+    .join('\n\n');
 };

@@ -33,13 +33,13 @@ export const TestimonialsCarousel = ({ testimonials }: TestimonialsCarouselProps
               <div className="flex flex-col items-center text-center space-y-6 md:space-y-8 select-none cursor-grab active:cursor-grabbing">
                 <Typography
                   as="p"
-                  className="font-heading font-light italic uppercase tracking-widest leading-normal text-sm"
+                  className="font-heading font-light italic uppercase tracking-widest leading-normal text-sm mb-4"
                 >
                   {text}
                 </Typography>
                 <Typography
                   as="p"
-                  className="font-heading font-light uppercase tracking-widest leading-normal text-sm mt-4"
+                  className="font-heading font-light uppercase tracking-widest leading-normal text-sm m-0"
                 >
                   {testimonial.author}
                 </Typography>

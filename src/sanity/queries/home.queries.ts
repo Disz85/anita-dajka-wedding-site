@@ -220,9 +220,9 @@ export type HighlightsSectionData = {
 
 // Video Section Types
 export type VideoSectionData = {
-  title: LocalizedString;
+  title: LocalizedBlockContent;
   subtitle?: LocalizedString;
-  description: LocalizedString;
+  description: LocalizedBlockContent;
   video: {
     asset: {
       url: string;

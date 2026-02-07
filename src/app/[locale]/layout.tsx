@@ -6,7 +6,9 @@ import { Header } from '@/components/layout/header/header/header.component';
 import { routing } from '@/i18n/i18n.routing';
 import type { Locale } from '@/i18n/i18n.config';
 import { getHeaderData } from '@/data-access/header';
+import { getFooterData } from '@/data-access/footer';
 import { getSiteSettings } from '@/data-access/settings';
+import { Footer } from '@/components/layout/footer/footer.component';
 import { cormorant, lora, proza, raleway } from '../fonts';
 import '../globals.css';
 
@@ -57,9 +59,10 @@ export default async function LocaleLayout({ children, params }: Props) {
   setRequestLocale(locale);
 
   // Fetch messages and CMS data in parallel using Data Access Layer
-  const [messages, headerData, settings] = await Promise.all([
+  const [messages, headerData, footerData, settings] = await Promise.all([
     getMessages(),
     getHeaderData(),
+    getFooterData(),
     getSiteSettings(),
   ]);
 
@@ -72,6 +75,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         <NextIntlClientProvider messages={messages}>
           <Header data={headerData} settings={settings} locale={locale} />
           {children}
+          <Footer data={footerData} settings={settings} locale={locale} />
         </NextIntlClientProvider>
       </body>
     </html>

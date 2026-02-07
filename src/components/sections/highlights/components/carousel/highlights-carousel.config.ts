@@ -20,7 +20,7 @@ export const PARALLAX_FACTORS = {
 export const CAROUSEL_STYLES = {
   viewport: 'overflow-hidden w-full',
   container:
-    'flex bg-transparent touch-pan-y ml-[-16px] items-center cursor-grab active:cursor-grabbing',
+    'relative flex bg-transparent touch-pan-y ml-[-16px] items-center cursor-grab active:cursor-grabbing',
   slideWrapper: 'relative shrink-0 select-none box-border',
   slideInner:
     'embla__slide__inner relative overflow-hidden transition-transform duration-0 ease-linear origin-center',

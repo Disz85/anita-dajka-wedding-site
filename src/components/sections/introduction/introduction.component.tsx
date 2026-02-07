@@ -58,14 +58,14 @@ export const Introduction = ({ data }: IntroductionProps) => {
         />
       )}
       <Container size="narrow">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           <motion.div
             variants={textVariants}
             {...animationProps}
             className="order-2 md:order-1 flex flex-col items-center text-center md:text-left w-full"
           >
             {descriptionBlocks && (
-              <div className="mb-10 text-justify md:text-left w-full">
+              <div className="mb-10 text-justify w-full">
                 <CustomPortableText value={descriptionBlocks} />
               </div>
             )}

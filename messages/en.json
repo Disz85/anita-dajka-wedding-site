@@ -63,5 +63,20 @@
   },
   "hero": {
     "sectionLabel": "Hero section"
+  },
+  "footer": {
+    "footerAriaLabel": "Site footer",
+    "followAlong": "Follow along",
+    "instagramAriaLabel": "Follow on Instagram: {handle}",
+    "instagramImagesLabel": "Instagram feed images",
+    "instagramImageLabel": "Instagram image {index}",
+    "instagramIconLabel": "Follow on Instagram",
+    "facebookIconLabel": "Follow on Facebook",
+    "socialLinksLabel": "Social media links",
+    "legalPrivacy": "Privacy",
+    "legalImpressum": "Impressum",
+    "legalPrivacyPlaceholder": "Content coming soon.",
+    "legalImpressumPlaceholder": "Content coming soon.",
+    "copyright": "Copyright © {year} {siteTitle}. All Rights Reserved."
   }
 }

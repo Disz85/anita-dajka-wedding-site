@@ -65,5 +65,20 @@
   },
   "hero": {
     "sectionLabel": "Hero szekció"
+  },
+  "footer": {
+    "footerAriaLabel": "Oldal lábléc",
+    "followAlong": "Követés",
+    "instagramAriaLabel": "Követés Instagramon: {handle}",
+    "instagramImagesLabel": "Instagram feed képek",
+    "instagramImageLabel": "Instagram kép {index}",
+    "instagramIconLabel": "Követés Instagramon",
+    "facebookIconLabel": "Követés Facebookon",
+    "socialLinksLabel": "Közösségi média linkek",
+    "legalPrivacy": "Adatvédelem",
+    "legalImpressum": "Impresszum",
+    "legalPrivacyPlaceholder": "A tartalom hamarosan elkészül.",
+    "legalImpressumPlaceholder": "A tartalom hamarosan elkészül.",
+    "copyright": "Copyright © {year} {siteTitle}. Minden jog fenntartva."
   }
 }

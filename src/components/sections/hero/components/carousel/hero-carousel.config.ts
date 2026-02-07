@@ -16,6 +16,6 @@ export const AUTOPLAY_OPTIONS = {
 
 export const HERO_STYLES = {
   viewport: 'overflow-hidden w-full h-full absolute inset-0',
-  container: 'flex h-full touch-pan-y',
+  container: 'relative flex h-full touch-pan-y',
   slide: 'relative flex-[0_0_100%] min-w-0 h-full',
 } as const satisfies Record<string, string>;

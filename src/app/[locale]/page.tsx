@@ -21,7 +21,7 @@ export default async function Home({ params }: Props) {
   const [, homeData] = await Promise.all([getSiteSettings(), getHomePageData()]);
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen relative">
       <Hero data={homeData?.heroSection} />
       <Highlights data={homeData?.highlightsSection} />
       <Video data={homeData?.videoSection} />

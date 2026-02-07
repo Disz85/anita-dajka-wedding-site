@@ -1,6 +1,6 @@
 import { cva } from 'class-variance-authority';
 
-export const sectionVariants = cva('w-full', {
+export const sectionVariants = cva('w-full relative', {
   variants: {
     spacing: {
       none: 'py-0',

@@ -56,6 +56,8 @@
   --input: #e5e5e5;
   --ring: #434343;
 
+  --footer-handle: rgb(136, 136, 136); /* Instagram handle / follow link */
+
   --radius: 0.5rem;
 }
 
@@ -82,6 +84,8 @@
     --border: #262626;
     --input: #262626;
     --ring: #d4d4d4;
+
+    --footer-handle: rgb(163, 163, 163);
   }
 }
 
