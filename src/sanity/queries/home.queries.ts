@@ -273,8 +273,6 @@ export type SanityTestimonial = {
 };
 
 export type TestimonialsSectionData = {
-  title: LocalizedString;
-  subtitle?: LocalizedString;
   testimonials: SanityTestimonial[];
 };
 
