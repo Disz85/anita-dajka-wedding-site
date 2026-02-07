@@ -12,6 +12,13 @@ export const getLocalizedValue = (
     return undefined;
   }
 
-  const typedValue = value as Record<string, string>;
-  return typedValue[locale] ?? typedValue.hu;
+  if (locale === 'hu') {
+    return value.hu ?? value.en;
+  }
+
+  if (locale === 'en') {
+    return value.en ?? value.hu;
+  }
+
+  return value.hu ?? value.en;
 };

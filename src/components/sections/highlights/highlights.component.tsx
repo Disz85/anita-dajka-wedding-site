@@ -4,11 +4,16 @@ import { useLocale } from 'next-intl';
 import { HighlightsCarousel } from '@/components/ui/carousel/highlights/carousel/highlights-carousel.component';
 import { SectionHeader } from '@/components/ui/section-header/section-header.component';
 import { SectionDescription } from '@/components/ui/section-description/section-description.component';
+import { Section } from '@/components/ui/section/section.component';
 import { HighlightItem } from '@/components/ui/carousel/highlights/carousel/highlights-carousel.types';
 import { HighlightsSectionData, SanityHighlightItem } from '@/sanity/queries/home.queries';
 import { getLocalizedValue } from '@/lib/sanity-utils';
 
-export const Highlights = ({ data }: { data?: HighlightsSectionData }) => {
+interface HighlightsProps {
+  data?: HighlightsSectionData;
+}
+
+export const Highlights = ({ data }: HighlightsProps) => {
   const locale = useLocale();
 
   if (data?.items === undefined || data?.items === null) {
@@ -21,7 +26,7 @@ export const Highlights = ({ data }: { data?: HighlightsSectionData }) => {
   const currentSubtitle = getLocalizedValue(subtitle, locale);
   const currentDescription = getLocalizedValue(description, locale);
 
-  const mappedItems = items.map((item: SanityHighlightItem, idx: number) => {
+  const mappedItems: HighlightItem[] = items.map((item: SanityHighlightItem, idx: number) => {
     const { dimensions, lqip } = item.image.asset.metadata;
     const orientation = dimensions.width > dimensions.height ? 'landscape' : 'portrait';
 
@@ -31,11 +36,11 @@ export const Highlights = ({ data }: { data?: HighlightsSectionData }) => {
       alt: getLocalizedValue(item.alt, locale) ?? '',
       orientation,
       blurDataURL: lqip,
-    } as HighlightItem;
+    };
   });
 
   return (
-    <section className="w-full py-10 bg-white overflow-hidden">
+    <Section spacing="sm" background="default" className="overflow-hidden">
       {currentTitle && (
         <SectionHeader
           title={currentTitle}
@@ -46,6 +51,6 @@ export const Highlights = ({ data }: { data?: HighlightsSectionData }) => {
       )}
       <HighlightsCarousel items={mappedItems} />
       {currentDescription && <SectionDescription>{currentDescription}</SectionDescription>}
-    </section>
+    </Section>
   );
 };

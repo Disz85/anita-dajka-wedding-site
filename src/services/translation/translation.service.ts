@@ -1,6 +1,7 @@
 import OpenAI from 'openai';
 import { type Locale } from '@/i18n/i18n.config';
 import { siteConfig } from '@/config/site.config';
+import { TRANSLATION_SYSTEM_PROMPT } from '@/constants/translation.constants';
 import { TranslateOptions } from './translation.types';
 
 /**
@@ -64,8 +65,7 @@ class TranslationService {
       messages: [
         {
           role: 'system',
-          content:
-            'You are a professional wedding coordinator and translator specializing in elegant, romantic prose.',
+          content: TRANSLATION_SYSTEM_PROMPT,
         },
         { role: 'user', content: prompt },
       ],

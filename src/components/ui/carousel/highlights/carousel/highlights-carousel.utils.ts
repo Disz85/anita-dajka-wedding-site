@@ -1,5 +1,6 @@
 import { EmblaCarouselType } from 'embla-carousel';
 import { TWEEN_FACTORS, PARALLAX_FACTORS } from './highlights-carousel.config';
+import { readOrientation } from '@/utils/dom-utils';
 import { EmblaEngine, TweenContext } from './highlights-carousel.types';
 
 /**
@@ -121,7 +122,7 @@ export class HighlightsTweenService {
   ): void {
     const slideNode = emblaApi.slideNodes()[slideIndex];
     // Get orientation from data attribute (set by HighlightsSlide component)
-    const orientation = slideNode?.dataset.orientation as 'portrait' | 'landscape' | undefined;
+    const orientation = readOrientation(slideNode?.dataset);
     const scaleValue = this.calculateScaleValue(diffToTarget, orientation);
     this.setTransformScale(emblaApi, slideIndex, scaleValue);
   }
@@ -136,7 +137,7 @@ export class HighlightsTweenService {
   ): void {
     const slideNode = emblaApi.slideNodes()[slideIndex];
     // Get orientation from data attribute
-    const orientation = slideNode?.dataset.orientation as 'portrait' | 'landscape' | undefined;
+    const orientation = readOrientation(slideNode?.dataset);
 
     // Use orientation-specific parallax factor
     const parallaxFactor = orientation ? PARALLAX_FACTORS[orientation] : PARALLAX_FACTORS.portrait;

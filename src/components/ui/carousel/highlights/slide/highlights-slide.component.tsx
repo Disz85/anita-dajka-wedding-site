@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { HighlightsSlideProps } from '../carousel/highlights-carousel.types';
 import { CAROUSEL_STYLES, ORIENTATION_STYLES } from '../carousel/highlights-carousel.config';
@@ -10,8 +10,14 @@ export const HighlightsSlide = ({ item, index, total }: HighlightsSlideProps) =>
   const t = useTranslations('carousel.highlights');
   const [isLoaded, setIsLoaded] = useState(false);
   const ref = React.useRef(null);
-  // Only start loading/rendering when within 400px of viewport
   const isInView = useInView(ref, { once: true, margin: '400px 0px 400px 0px' });
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ['-10%', '10%']);
 
   return (
     <li
@@ -38,16 +44,14 @@ export const HighlightsSlide = ({ item, index, total }: HighlightsSlideProps) =>
       >
         {(isInView || index < 2) && (
           <motion.div
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={isLoaded ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.8, ease: [0.21, 0.45, 0.32, 0.9] }}
-            className="w-full h-full relative"
+            style={{ y }}
+            className="absolute inset-0 w-full h-[120%] -top-[10%] will-change-transform"
           >
             <Image
               src={item.image}
               alt={item.alt}
               fill
-              className="object-cover embla__parallax__img w-[150%] h-[150%] max-w-none -left-[25%] -top-[25%]"
+              className="object-cover embla__parallax__img w-[150%] h-[150%] max-w-none -left-[25%] -top-[25%] will-change-transform"
               sizes="(max-width: 768px) 130vw, (max-width: 1200px) 70vw, 800px"
               priority={index < 2}
               placeholder={item.blurDataURL ? 'blur' : 'empty'}
@@ -57,7 +61,6 @@ export const HighlightsSlide = ({ item, index, total }: HighlightsSlideProps) =>
           </motion.div>
         )}
 
-        {/* Subtle overlay/loading state if needed */}
         {!isLoaded && (
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <div className="w-6 h-6 border-2 border-neutral-100 border-t-neutral-300 rounded-full animate-spin opacity-20" />

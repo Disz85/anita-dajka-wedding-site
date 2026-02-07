@@ -48,5 +48,8 @@
       "pause": "Pause slideshow",
       "play": "Play slideshow"
     }
+  },
+  "video": {
+    "sectionLabel": "Video showcase"
   }
 }

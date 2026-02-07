@@ -74,6 +74,37 @@ export const homePageQuery = groq`
           en
         }
       }
+    },
+    videoSection {
+      title {
+        hu,
+        en
+      },
+      subtitle {
+        hu,
+        en
+      },
+      description {
+        hu,
+        en
+      },
+      video {
+        asset-> {
+          url
+        }
+      },
+      poster {
+        asset-> {
+          url,
+          metadata {
+            lqip
+          }
+        }
+      },
+      posterAlt {
+        hu,
+        en
+      }
     }
   }
 `;
@@ -134,10 +165,32 @@ export type HighlightsSectionData = {
   items: SanityHighlightItem[];
 };
 
+// Video Section Types
+export type VideoSectionData = {
+  title: LocalizedString;
+  subtitle?: LocalizedString;
+  description: LocalizedString;
+  video: {
+    asset: {
+      url: string;
+    };
+  };
+  poster: {
+    asset: {
+      url: string;
+      metadata: {
+        lqip?: string;
+      };
+    };
+  };
+  posterAlt?: LocalizedString;
+};
+
 // Combined Response Type
 export type HomePageResponse = {
   heroSection: HeroSectionData;
   highlightsSection: HighlightsSectionData;
+  videoSection?: VideoSectionData;
 };
 
 // Keep the old export for backwards compatibility

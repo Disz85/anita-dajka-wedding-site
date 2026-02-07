@@ -1,10 +1,11 @@
 import { cn } from '@/lib/utils';
 import { ContainerProps } from './container.types';
+import { containerVariants } from './container.variants';
 
-export function Container({ children, className, ...props }: ContainerProps) {
+export const Container = ({ children, className, size, ...props }: ContainerProps) => {
   return (
-    <div className={cn('mx-auto w-full max-w-[1400px] px-6 md:px-12', className)} {...props}>
+    <div className={cn(containerVariants({ size, className }))} {...props}>
       {children}
     </div>
   );
-}
+};

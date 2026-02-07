@@ -3,6 +3,7 @@ import { getSiteSettings } from '@/data-access/settings';
 import { getHomeHighlights } from '@/data-access/home';
 import { Hero } from '@/components/sections/hero/hero.component';
 import { Highlights } from '@/components/sections/highlights/highlights.component';
+import { Video } from '@/components/sections/video/video.component';
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -21,6 +22,7 @@ export default async function Home({ params }: Props) {
     <main className="min-h-screen">
       <Hero data={homeData?.heroSection} />
       <Highlights data={homeData?.highlightsSection} />
+      <Video data={homeData?.videoSection} />
     </main>
   );
 }

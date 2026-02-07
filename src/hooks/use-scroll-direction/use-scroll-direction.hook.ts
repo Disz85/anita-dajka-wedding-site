@@ -1,18 +1,11 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import type {
   ScrollDirection,
   UseScrollDirectionOptions,
   UseScrollDirectionResult,
 } from './use-scroll-direction.types';
-
-const getInitialScrollY = () => {
-  if (typeof window === 'undefined') {
-    return 0;
-  }
-  return window.scrollY;
-};
 
 export const useScrollDirection = (
   options: UseScrollDirectionOptions = {},
@@ -20,9 +13,9 @@ export const useScrollDirection = (
   const { threshold = 10, scrollThreshold = 100 } = options;
 
   const [scrollDirection, setScrollDirection] = useState<ScrollDirection>(null);
-  const [scrollY, setScrollY] = useState(getInitialScrollY);
-  const [lastScrollY, setLastScrollY] = useState(getInitialScrollY);
-  const [isScrolled, setIsScrolled] = useState(() => getInitialScrollY() > scrollThreshold);
+  const [scrollY, setScrollY] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const lastScrollY = useRef(0);
 
   const handleScroll = useCallback(() => {
     const currentScrollY = window.scrollY;
@@ -30,22 +23,30 @@ export const useScrollDirection = (
     setScrollY(currentScrollY);
     setIsScrolled(currentScrollY > scrollThreshold);
 
-    if (Math.abs(currentScrollY - lastScrollY) < threshold) {
+    if (Math.abs(currentScrollY - lastScrollY.current) < threshold) {
       return;
     }
 
-    const direction = currentScrollY > lastScrollY ? 'down' : 'up';
+    const direction = currentScrollY > lastScrollY.current ? 'down' : 'up';
     setScrollDirection(direction);
-    setLastScrollY(currentScrollY);
-  }, [lastScrollY, threshold, scrollThreshold]);
+    lastScrollY.current = currentScrollY;
+  }, [threshold, scrollThreshold]);
 
   useEffect(() => {
+    // Set initial values on mount
+    requestAnimationFrame(() => {
+      const currentScrollY = window.scrollY;
+      setScrollY(currentScrollY);
+      lastScrollY.current = currentScrollY;
+      setIsScrolled(currentScrollY > scrollThreshold);
+    });
+
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [handleScroll]);
+  }, [handleScroll, scrollThreshold]);
 
   return { scrollDirection, isScrolled, scrollY };
 };

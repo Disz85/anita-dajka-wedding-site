@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
 import { SectionHeaderProps } from './section-header.types';
-import { HEADING_MAP } from './section-header.constants';
+import { Typography } from '@/components/ui/typography/typography.component';
 
 /**
  * Reusable Section Header component following SEO best practices.
@@ -16,8 +16,10 @@ export const SectionHeader = ({
   headingLevel = 2,
   subtitleTag = 'p',
 }: SectionHeaderProps) => {
-  const TitleTag = HEADING_MAP[headingLevel];
-  const SubtitleTag = subtitleTag;
+  const headingVariant =
+    headingLevel === 1 ? 'h1' : headingLevel === 2 ? 'h2' : headingLevel === 3 ? 'h3' : 'h4';
+
+  const HeadingTag = `h${headingLevel}` as const;
 
   return (
     <hgroup
@@ -28,13 +30,23 @@ export const SectionHeader = ({
       )}
     >
       {subtitle && (
-        <SubtitleTag className="font-subtitle mb-1 tracking-[0.2em] font-normal text-primary uppercase text-fluid-subtitle">
+        <Typography
+          as={subtitleTag}
+          variant="subtitle"
+          tone="primary"
+          className="mb-1 text-fluid-subtitle font-normal"
+        >
           {subtitle}
-        </SubtitleTag>
+        </Typography>
       )}
-      <TitleTag className="font-heading font-light uppercase text-primary leading-none tracking-widest text-fluid-h2">
+      <Typography
+        variant={headingVariant}
+        as={HeadingTag}
+        tone="primary"
+        className="font-heading font-light uppercase leading-none tracking-widest text-fluid-h2"
+      >
         {title}
-      </TitleTag>
+      </Typography>
     </hgroup>
   );
 };

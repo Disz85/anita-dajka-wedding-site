@@ -2,6 +2,7 @@
 
 import { useLocale } from 'next-intl';
 import { HeroCarousel } from '@/components/ui/carousel/hero/carousel/hero-carousel.component';
+import { Section } from '@/components/ui/section/section.component';
 import { HeroItem } from '@/components/ui/carousel/hero/carousel/hero-carousel.types';
 import { HeroSectionData, SanityHeroItem } from '@/sanity/queries/home.queries';
 import { getLocalizedValue } from '@/lib/sanity-utils';
@@ -25,8 +26,11 @@ export const Hero = ({ data }: { data?: HeroSectionData }) => {
   }));
 
   return (
-    <section className="relative w-full aspect-video xl:aspect-none xl:h-[calc(100vh-5rem)] overflow-hidden mt-20 xl:mt-0 px-0">
+    <Section
+      spacing="none"
+      className="relative aspect-video xl:aspect-none xl:h-[calc(100vh-5rem)] overflow-hidden mt-20 xl:mt-0 px-0"
+    >
       <HeroCarousel items={mappedItems} />
-    </section>
+    </Section>
   );
 };

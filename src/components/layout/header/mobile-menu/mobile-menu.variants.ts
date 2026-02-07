@@ -4,27 +4,23 @@ import { Variants, Easing } from 'framer-motion';
 const EASE_CUSTOM = [0.76, 0, 0.24, 1] as const satisfies Easing;
 const MENU_ITEM_EASE = [0.37, 0, 0.63, 1] as const satisfies Easing;
 
-const INTRO_DURATION = 0.6;
-const CONTENT_DELAY = 0.5;
-const CONTENT_DURATION = 0.7;
+const CONTENT_DURATION = 0.5;
 
 // Calculate when items should start appearing relative to content layer
-const MENU_ITEMS_START_DELAY = CONTENT_DELAY + 0.4;
+const MENU_ITEMS_START_DELAY = 0.3;
 
 const STAGGER_DELAY = 0.09;
 
 /**
  * Animation configuration for the Mobile Menu component.
  *
- * Implements a "curtain" effect where a black intro layer drops down first,
- * followed by the white content layer carrying the menu items.
+ * Implements a simple slide-down effect for the menu content.
  *
  * Exit animation reverses this flow, sliding everything upwards.
  */
 
 /**
  * The main white background layer that holds the menu content.
- * It slides down slightly after the black layer to create the layered effect.
  */
 export const menuContentLayerVariants = {
   initial: {
@@ -35,7 +31,6 @@ export const menuContentLayerVariants = {
     transition: {
       duration: CONTENT_DURATION,
       ease: EASE_CUSTOM,
-      delay: CONTENT_DELAY,
     },
   },
   exit: {
@@ -43,29 +38,6 @@ export const menuContentLayerVariants = {
     transition: {
       duration: CONTENT_DURATION,
       ease: EASE_CUSTOM,
-    },
-  },
-} as const satisfies Variants;
-
-/**
- * The black intro layer that appears first to cover the screen.
- * It serves as a visual transition before the content appears.
- */
-export const menuIntroLayerVariants = {
-  initial: {
-    y: '-100%',
-  },
-  animate: {
-    y: '0%',
-    transition: {
-      duration: INTRO_DURATION,
-      ease: EASE_CUSTOM,
-    },
-  },
-  exit: {
-    y: '-100%',
-    transition: {
-      duration: 0,
     },
   },
 } as const satisfies Variants;
@@ -147,25 +119,6 @@ export const menuFooterVariants = {
     opacity: 0,
     transition: {
       duration: 0,
-    },
-  },
-} as const satisfies Variants;
-
-/**
- * Animation for header items (Logo, Hamburger) during mobile menu transition.
- * They fade out when the "black curtain" drops and fade back in on the white layer.
- */
-export const headerItemVariants = {
-  closed: {
-    opacity: 1,
-    transition: { duration: 0.2 },
-  },
-  open: {
-    opacity: [1, 0, 0, 1],
-    transition: {
-      duration: 1.2,
-      times: [0, 0.1, 0.6, 1],
-      ease: 'easeInOut',
     },
   },
 } as const satisfies Variants;

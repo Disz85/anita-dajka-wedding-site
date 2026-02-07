@@ -6,7 +6,7 @@ import { Container } from '@/components/ui/container/container.component';
 import { MobileMenuProps } from './mobile-menu.types';
 import { MobileMenuBody } from './mobile-menu-body.component';
 import { MobileMenuFooter } from './mobile-menu-footer.component';
-import { menuContentLayerVariants, menuIntroLayerVariants } from './mobile-menu.variants';
+import { menuContentLayerVariants } from './mobile-menu.variants';
 
 export const MobileMenu = ({
   isOpen,
@@ -18,15 +18,6 @@ export const MobileMenu = ({
     <AnimatePresence>
       {isOpen && (
         <>
-          <motion.div
-            variants={menuIntroLayerVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            className="fixed left-0 top-0 h-screen w-full bg-black z-60"
-            aria-hidden="true"
-          />
-
           <motion.nav
             id="mobile-menu"
             aria-label="Mobile Navigation"

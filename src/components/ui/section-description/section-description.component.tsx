@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils';
 import { SectionDescriptionProps } from './section-description.types';
+import { Typography } from '@/components/ui/typography/typography.component';
 
 export const SectionDescription = ({
   children,
@@ -15,10 +16,15 @@ export const SectionDescription = ({
   };
 
   return (
-    <div className={cn('w-full px-4 mt-8 mb-12', alignStyles[align], maxWidth, className)}>
-      <Component className="font-body text-sm text-primary leading-relaxed tracking-wide">
+    <div className={cn('w-full px-4 mt-8 md:mb-4', alignStyles[align], maxWidth, className)}>
+      <Typography
+        as={Component}
+        variant="p"
+        tone="primary"
+        className="text-sm leading-relaxed tracking-wide"
+      >
         {children}
-      </Component>
+      </Typography>
     </div>
   );
 };

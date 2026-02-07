@@ -9,16 +9,43 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#434343', // The elegant dark grey from the site
-        secondary: '#3E3E3E', // Navigation grey
-        background: '#FFFFFF',
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
+        primary: {
+          DEFAULT: 'var(--primary)',
+          foreground: 'var(--primary-foreground)',
+        },
+        secondary: {
+          DEFAULT: 'var(--secondary)',
+          foreground: 'var(--secondary-foreground)',
+        },
+        muted: {
+          DEFAULT: 'var(--muted)',
+          foreground: 'var(--muted-foreground)',
+        },
+        accent: {
+          DEFAULT: 'var(--accent)',
+          foreground: 'var(--accent-foreground)',
+        },
+        destructive: {
+          DEFAULT: 'var(--destructive)',
+          foreground: 'var(--destructive-foreground)',
+        },
+        border: 'var(--border)',
+        input: 'var(--input)',
+        ring: 'var(--ring)',
       },
       fontFamily: {
         heading: ['var(--font-cormorant)', 'serif'],
-        body: ['var(--font-cormorant)', 'serif'], // The site uses Cormorant for body too
+        body: ['var(--font-cormorant)', 'serif'],
         nav: ['var(--font-lora)', 'serif'],
         subtitle: ['var(--font-proza)', 'sans-serif'],
         sans: ['var(--font-raleway)', 'sans-serif'],
+      },
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
       },
     },
   },
