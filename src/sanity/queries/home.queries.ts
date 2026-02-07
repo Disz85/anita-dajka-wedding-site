@@ -141,6 +141,23 @@ export const homePageQuery = groq`
         hu,
         en
       }
+    },
+    testimonialsSection {
+      title {
+        hu,
+        en
+      },
+      subtitle {
+        hu,
+        en
+      },
+      testimonials[] {
+        author,
+        text {
+          hu,
+          en
+        }
+      }
     }
   }
 `;
@@ -249,12 +266,25 @@ export type IntroductionSectionData = {
   ctaUrl?: string;
 };
 
+// Testimonials Section Types
+export type SanityTestimonial = {
+  author: string;
+  text: LocalizedString;
+};
+
+export type TestimonialsSectionData = {
+  title: LocalizedString;
+  subtitle?: LocalizedString;
+  testimonials: SanityTestimonial[];
+};
+
 // Combined Response Type
 export type HomePageResponse = {
   heroSection: HeroSectionData;
   introductionSection?: IntroductionSectionData;
   highlightsSection: HighlightsSectionData;
   videoSection?: VideoSectionData;
+  testimonialsSection?: TestimonialsSectionData;
 };
 
 // Keep the old export for backwards compatibility
