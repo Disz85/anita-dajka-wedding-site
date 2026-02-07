@@ -1,13 +1,13 @@
 import { LocalizedString } from '@/sanity/queries/home.queries';
 
 /**
- * Safely extracts a localized string from a Sanity object.
+ * Safely extracts a localized value from a Sanity object.
  * Returns the requested locale version, or falls back to 'hu', or returns undefined.
  */
-export const getLocalizedValue = (
-  value: LocalizedString | undefined | null,
+export const getLocalizedValue = <T>(
+  value: { hu?: T; en?: T } | undefined | null,
   locale: string,
-): string | undefined => {
+): T | undefined => {
   if (value === undefined || value === null) {
     return undefined;
   }

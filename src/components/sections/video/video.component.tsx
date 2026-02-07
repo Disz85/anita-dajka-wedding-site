@@ -40,7 +40,7 @@ export const Video = ({ data }: { data?: VideoSectionData }) => {
     <Section
       ref={containerRef}
       spacing="none"
-      className="relative h-[70vw] max-h-[800px] overflow-hidden"
+      className="relative h-[70vw] max-h-[600px] overflow-hidden"
       aria-label={currentTitle ?? 'Video showcase'}
     >
       <motion.div style={{ y }} className="absolute inset-0 w-full h-[120%] -top-[10%]">

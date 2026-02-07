@@ -1,4 +1,5 @@
 import { groq } from 'next-sanity';
+import type { PortableTextBlock } from 'next-sanity';
 
 export const homePageQuery = groq`
   *[_type == "home"][0] {
@@ -34,6 +35,41 @@ export const homePageQuery = groq`
           en
         }
       }
+    },
+    introductionSection {
+      title {
+        hu,
+        en
+      },
+      subtitle {
+        hu,
+        en
+      },
+      description {
+        hu,
+        en
+      },
+      image {
+        asset-> {
+          url,
+          metadata {
+            lqip,
+            dimensions {
+              width,
+              height
+            }
+          }
+        },
+        alt {
+          hu,
+          en
+        }
+      },
+      ctaLabel {
+        hu,
+        en
+      },
+      ctaUrl
     },
     highlightsSection {
       title {
@@ -186,9 +222,37 @@ export type VideoSectionData = {
   posterAlt?: LocalizedString;
 };
 
+export type LocalizedBlockContent = {
+  hu?: PortableTextBlock[];
+  en?: PortableTextBlock[];
+};
+
+// Introduction Section Types
+export type IntroductionSectionData = {
+  title: LocalizedString;
+  subtitle?: LocalizedString;
+  description: LocalizedBlockContent;
+  image: {
+    asset: {
+      url: string;
+      metadata: {
+        lqip?: string;
+        dimensions: {
+          width: number;
+          height: number;
+        };
+      };
+    };
+    alt: LocalizedString;
+  };
+  ctaLabel?: LocalizedString;
+  ctaUrl?: string;
+};
+
 // Combined Response Type
 export type HomePageResponse = {
   heroSection: HeroSectionData;
+  introductionSection?: IntroductionSectionData;
   highlightsSection: HighlightsSectionData;
   videoSection?: VideoSectionData;
 };

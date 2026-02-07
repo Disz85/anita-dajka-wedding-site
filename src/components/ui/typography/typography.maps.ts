@@ -16,5 +16,6 @@ export const defaultElementMap: Record<
   muted: 'p',
   nav: 'span',
   subtitle: 'p',
+  introBody: 'p',
   videoTitle: 'h2',
 };

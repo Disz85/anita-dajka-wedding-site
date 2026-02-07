@@ -5,7 +5,7 @@ export const sectionVariants = cva('w-full', {
     spacing: {
       none: 'py-0',
       sm: 'py-4 md:py-8',
-      default: 'py-16 md:py-24',
+      default: 'py-8 md:py-16',
       lg: 'py-24 md:py-32',
     },
     background: {
