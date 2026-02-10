@@ -18,4 +18,8 @@ export const defaultElementMap: Record<
   subtitle: 'p',
   introBody: 'p',
   videoTitle: 'h2',
+  pageTitle: 'h1',
+  pageSubtitle: 'p',
+  pageDescription: 'p',
+  portfolioTitle: 'h3',
 };

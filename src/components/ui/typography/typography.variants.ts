@@ -17,6 +17,14 @@ export const typographyVariants = cva('', {
       introBody: 'font-body text-[14px] leading-[1.5] tracking-[0.05em]',
       videoTitle:
         'font-heading text-[clamp(25px,8vw,100px)] leading-none tracking-[0.05em] font-light',
+      pageTitle:
+        'font-heading text-[clamp(26px,5vw,65px)] font-light uppercase leading-[1] tracking-[0.1em] text-center mb-4',
+      pageSubtitle:
+        'font-subtitle text-[12px] uppercase tracking-[0.1em] leading-[1.5] text-[rgba(67,67,67,1)] mb-1',
+      pageDescription:
+        'font-body text-[14px] font-light leading-[1.5] tracking-[0.05em] text-center text-[rgba(67,67,67,1)]',
+      portfolioTitle:
+        'font-heading text-[clamp(30px,5vw,75px)] font-light uppercase tracking-[0.1em] text-white text-center leading-[1.2]',
     },
     tone: {
       default: 'text-foreground',

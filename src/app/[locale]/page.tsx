@@ -6,12 +6,9 @@ import { Introduction } from '@/components/sections/introduction/introduction.co
 import { Highlights } from '@/components/sections/highlights/highlights.component';
 import { Video } from '@/components/sections/video/video.component';
 import { Testimonials } from '@/components/sections/testimonials/testimonials.component';
+import { PageProps } from '@/types/page.types';
 
-type Props = {
-  params: Promise<{ locale: string }>;
-};
-
-export default async function Home({ params }: Props) {
+export default async function Home({ params }: PageProps) {
   const { locale } = await params;
 
   // Enable static rendering

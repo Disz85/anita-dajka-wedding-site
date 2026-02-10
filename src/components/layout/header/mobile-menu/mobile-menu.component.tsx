@@ -30,7 +30,10 @@ export const MobileMenu = ({
             <div className="h-20 shrink-0" />
 
             <div className="flex-1 overflow-y-auto overscroll-y-contain touch-pan-y">
-              <Container className="flex min-h-full flex-col justify-between pb-10 pt-4">
+              <Container
+                withPaddingForDesktop={true}
+                className="flex min-h-full flex-col justify-between pb-10 pt-4"
+              >
                 <MobileMenuBody navigation={navigation} locale={locale} />
                 <MobileMenuFooter settings={settings} />
               </Container>

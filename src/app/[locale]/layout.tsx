@@ -4,7 +4,6 @@ import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Header } from '@/components/layout/header/header/header.component';
 import { routing } from '@/i18n/i18n.routing';
-import type { Locale } from '@/i18n/i18n.config';
 import { getHeaderData } from '@/data-access/header';
 import { getFooterData } from '@/data-access/footer';
 import { getSiteSettings } from '@/data-access/settings';
