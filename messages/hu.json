@@ -57,6 +57,9 @@
   "testimonials": {
     "sectionLabel": "Kedves szavak"
   },
+  "portfolio": {
+    "browse": "Portfólió megtekintése"
+  },
   "highlights": {
     "sectionLabel": "Kiemelt munkák"
   },

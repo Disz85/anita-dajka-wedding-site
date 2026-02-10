@@ -13,7 +13,8 @@ export const getPortfolioPageQuery = groq`
       "image": image.asset->url,
       "imageHotspot": image.hotspot,
       "imageCrop": image.crop,
-      "imageAlt": image.alt
+      "imageAlt": image.alt,
+      textAlignment
     },
     "seo": seo {
       ...,

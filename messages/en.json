@@ -55,6 +55,9 @@
   "testimonials": {
     "sectionLabel": "Kind Words"
   },
+  "portfolio": {
+    "browse": "Browse portfolio"
+  },
   "highlights": {
     "sectionLabel": "Selected Works"
   },

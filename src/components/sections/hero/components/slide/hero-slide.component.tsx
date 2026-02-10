@@ -2,8 +2,9 @@
 
 import React, { useState, useRef } from 'react';
 import Image from 'next/image';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll } from 'framer-motion';
 import { HeroSlideProps } from '../carousel/hero-carousel.types';
+import { ParallaxImage } from '@/components/ui/parallax-image/parallax-image.component';
 import { HERO_STYLES } from '../carousel/hero-carousel.config';
 import { HERO_SLIDE_ANIMATION } from './hero-slide.variants';
 import { useTranslations } from 'next-intl';
@@ -18,8 +19,6 @@ export const HeroSlide = ({ item, index, total, isActive, isFirst }: HeroSlidePr
     target: containerRef,
     offset: ['start start', 'end start'],
   });
-
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
 
   const TitleTag = isFirst ? 'h1' : 'h2';
 
@@ -38,19 +37,19 @@ export const HeroSlide = ({ item, index, total, isActive, isFirst }: HeroSlidePr
         transition={HERO_SLIDE_ANIMATION.transition}
         className="w-full h-full relative"
       >
-        <motion.div style={{ y }} className="absolute inset-0 w-full h-[120%] -top-[10%]">
-          <Image
-            src={item.image}
-            alt={item.alt}
-            fill
-            className="object-cover"
-            sizes="100vw"
-            priority={index < 2}
-            placeholder={item.blurDataURL ? 'blur' : 'empty'}
-            blurDataURL={item.blurDataURL}
-            onLoad={() => setIsLoaded(true)}
-          />
-        </motion.div>
+        <ParallaxImage
+          src={item.image}
+          alt={item.alt}
+          fill
+          className="object-cover"
+          sizes="100vw"
+          priority={index < 2}
+          placeholder={item.blurDataURL ? 'blur' : 'empty'}
+          blurDataURL={item.blurDataURL}
+          onLoad={() => setIsLoaded(true)}
+          parallaxIntensity={20}
+          containerClassName="absolute inset-0 w-full h-full"
+        />
 
         <div className="absolute inset-0 bg-black/5 z-10 pointer-events-none" />
 

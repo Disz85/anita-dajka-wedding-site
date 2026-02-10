@@ -7,9 +7,7 @@ import { HighlightItem } from '@/components/sections/highlights/components/carou
 import { HighlightsSectionData, SanityHighlightItem } from '@/sanity/queries/home.queries';
 import { getLocalizedValue } from '@/lib/sanity-utils';
 
-interface HighlightsProps {
-  data?: HighlightsSectionData;
-}
+import { HighlightsProps } from './highlights.types';
 
 export const Highlights = ({ data }: HighlightsProps) => {
   const t = useTranslations('highlights');

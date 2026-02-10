@@ -1,4 +1,4 @@
-export interface PortfolioItem {
+export type PortfolioItem = {
   _key: string;
   title: {
     hu?: string;
@@ -19,9 +19,10 @@ export interface PortfolioItem {
     right: number;
   };
   imageAlt?: string;
-}
+  textAlignment?: 'left' | 'center' | 'right';
+};
 
-export interface PortfolioPageData {
+export type PortfolioPageData = {
   _id: string;
   title: {
     hu?: string;
@@ -34,7 +35,7 @@ export interface PortfolioPageData {
   description: {
     hu?: string;
     en?: string;
-  }; // Assuming localazedText structure
+  };
   items: PortfolioItem[];
   seo?: Record<string, unknown>;
-}
+};

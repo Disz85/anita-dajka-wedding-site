@@ -24,7 +24,7 @@ export const typographyVariants = cva('', {
       pageDescription:
         'font-body text-[14px] font-light leading-[1.5] tracking-[0.05em] text-center text-[rgba(67,67,67,1)]',
       portfolioTitle:
-        'font-heading text-[clamp(30px,5vw,75px)] font-light uppercase tracking-[0.1em] text-white text-center leading-[1.2]',
+        'font-heading text-[clamp(30px,5vw,75px)] font-light uppercase tracking-[0.1em] text-white leading-[1.2]',
     },
     tone: {
       default: 'text-foreground',

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
-import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { useInView } from 'framer-motion';
+import { ParallaxImage } from '@/components/ui/parallax-image/parallax-image.component';
 import { cn } from '@/lib/utils';
 import { HighlightsSlideProps } from '../carousel/highlights-carousel.types';
 import { CAROUSEL_STYLES, ORIENTATION_STYLES } from '../carousel/highlights-carousel.config';
@@ -11,13 +11,6 @@ export const HighlightsSlide = ({ item, index, total }: HighlightsSlideProps) =>
   const [isLoaded, setIsLoaded] = useState(false);
   const ref = React.useRef(null);
   const isInView = useInView(ref, { once: true, margin: '400px 0px 400px 0px' });
-
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start end', 'end start'],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], ['-10%', '10%']);
 
   return (
     <li
@@ -43,21 +36,20 @@ export const HighlightsSlide = ({ item, index, total }: HighlightsSlideProps) =>
         )}
       >
         {(isInView || index < 2) && (
-          <motion.div
-            style={{ y }}
-            className="absolute inset-0 w-full h-[120%] -top-[10%] will-change-transform"
-          >
-            <Image
+          <div className="absolute inset-0 w-full h-[120%] -top-[10%] will-change-transform">
+            <ParallaxImage
               src={item.image}
               alt={item.alt}
               fill
-              className="object-cover embla__parallax__img w-[150%] h-[150%] max-w-none -left-[25%] -top-[25%] will-change-transform"
+              className="object-cover embla__parallax__img max-w-none w-[150%] h-[150%] -left-[25%] -top-[25%] will-change-transform"
               sizes="(max-width: 768px) 130vw, (max-width: 1200px) 70vw, 800px"
               placeholder={item.blurDataURL ? 'blur' : 'empty'}
               blurDataURL={item.blurDataURL}
               onLoad={() => setIsLoaded(true)}
+              parallaxIntensity={10}
+              containerClassName="width-full height-full"
             />
-          </motion.div>
+          </div>
         )}
 
         {!isLoaded && (

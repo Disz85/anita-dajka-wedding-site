@@ -1,45 +1,65 @@
 'use client';
 
-import Image from 'next/image';
 import { Link } from '@/i18n/i18n.navigation';
 import { isAppPathname } from '@/i18n/i18n.routing';
 import { Typography } from '@/components/ui/typography/typography.component';
 import { Button } from '@/components/ui/button/button.component';
 import { PortfolioCategoryItemProps } from './portfolio-categories.types';
+import { ParallaxImage } from '@/components/ui/parallax-image/parallax-image.component';
+import { cn } from '@/lib/utils';
 
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { getLocalizedValue } from '@/lib/sanity-utils';
 
 export const PortfolioCategoryItem = ({ item }: PortfolioCategoryItemProps) => {
   const locale = useLocale();
+  const t = useTranslations('portfolio');
   const title = getLocalizedValue(item.title, locale) || '';
 
   const content = (
     <>
-      <Image
+      <ParallaxImage
         src={item.image}
         alt={item.imageAlt || title}
         fill
-        className="object-cover transition-transform duration-700 group-hover:scale-105"
+        className="object-cover"
         sizes="100vw"
         placeholder="empty"
+        parallaxIntensity={8}
       />
 
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-white space-y-8 px-4">
-        <div className="max-w-[570px] w-full flex flex-col items-center space-y-8 text-center">
+      <div
+        className={cn(
+          'absolute inset-0 flex flex-col justify-center px-4 space-y-8 text-white transition-all duration-300',
+          'items-center text-center',
+          'md:justify-end md:pb-16',
+          item.textAlignment === 'left' && 'md:items-start md:pl-16',
+          item.textAlignment === 'right' && 'md:items-end md:pr-16',
+          (!item.textAlignment || item.textAlignment === 'center') && 'md:items-center',
+        )}
+      >
+        <div className={cn('max-w-100 w-full flex flex-col space-y-4 text-center')}>
           <Typography variant="portfolioTitle" tone="white" className="drop-shadow-sm uppercase">
             {title}
           </Typography>
-          <Button variant="outline-white" size="default" className="uppercase">
-            <span className="relative z-10">Browse portfolio</span>
-          </Button>
+          <div
+            className={cn(
+              'flex w-full',
+              // Always center the button relative to the text block
+              'justify-center',
+            )}
+          >
+            <Button variant="outline-white" size="default" className="uppercase">
+              <span className="relative z-10">{t('browse')}</span>
+            </Button>
+          </div>
         </div>
       </div>
     </>
   );
 
   return (
-    <div className="relative w-full h-[60vh] md:h-[80vh] overflow-hidden group">
+    <div className="relative w-full max-w-[1200px] aspect-1200/570 mx-auto overflow-hidden group">
       {isAppPathname(item.link) ? (
         <Link href={item.link} className="block w-full h-full relative">
           {content}
