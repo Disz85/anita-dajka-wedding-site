@@ -11,7 +11,7 @@ export const FooterInstagramGrid = ({
   navAriaLabel,
   getImageAriaLabel,
 }: FooterInstagramGridProps): React.JSX.Element | null => {
-  if (images.length === 0 || !instagramUrl) {
+  if (!images || images.length === 0 || !instagramUrl) {
     return null;
   }
   return (

@@ -17,7 +17,7 @@ export class HighlightsTweenService {
     const { engine } = context;
 
     emblaApi.scrollSnapList().forEach((scrollSnap, snapIndex) => {
-      const slideIndexes = engine.slideRegistry[snapIndex];
+      const slideIndexes = engine.slideRegistry[snapIndex] ?? [];
       this.tweenSnap(emblaApi, scrollSnap, slideIndexes, context);
     });
   }

@@ -30,6 +30,11 @@ export const HeroCarousel = ({ items }: HeroCarouselProps) => {
     onSelect(emblaApi);
     emblaApi.on('select', onSelect);
     emblaApi.on('reInit', onSelect);
+
+    return () => {
+      emblaApi.off('select', onSelect);
+      emblaApi.off('reInit', onSelect);
+    };
   }, [emblaApi, onSelect]);
 
   const isTextVisible = useHeroAutoplay(emblaApi, isPaused);

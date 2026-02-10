@@ -6,7 +6,7 @@ export const useHeroAutoplay = (
   emblaApi: EmblaCarouselType | undefined,
   isPaused: boolean = false,
 ) => {
-  const [isTextVisible, setIsTextVisible] = useState(true);
+  const [internalIsTextVisible, setInternalIsTextVisible] = useState(true);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const transitionTimerRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -27,10 +27,11 @@ export const useHeroAutoplay = (
     }
 
     clearTimers();
+    setInternalIsTextVisible(true);
 
     timerRef.current = setTimeout(() => {
       // 1. Text exit
-      setIsTextVisible(false);
+      setInternalIsTextVisible(false);
 
       // 2. Wait for exit animation, then scroll
       transitionTimerRef.current = setTimeout(() => {
@@ -49,7 +50,10 @@ export const useHeroAutoplay = (
     if (isPaused) {
       clearTimers();
     } else if (emblaApi) {
-      startAutoplay();
+      const timer = setTimeout(() => {
+        startAutoplay();
+      }, 0);
+      return () => clearTimeout(timer);
     }
   }, [isPaused, emblaApi, clearTimers, startAutoplay]);
 
@@ -59,7 +63,7 @@ export const useHeroAutoplay = (
     }
 
     const onSelect = () => {
-      setIsTextVisible(true);
+      setInternalIsTextVisible(true);
       if (!isPaused) {
         startAutoplay();
       }
@@ -67,6 +71,7 @@ export const useHeroAutoplay = (
 
     const stop = () => {
       clearTimers();
+      setInternalIsTextVisible(true);
     };
 
     const resume = () => {
@@ -79,11 +84,15 @@ export const useHeroAutoplay = (
     emblaApi.on('pointerDown', stop);
     emblaApi.on('pointerUp', resume);
 
+    let initTimer: NodeJS.Timeout;
     if (!isPaused) {
-      startAutoplay();
+      initTimer = setTimeout(() => {
+        startAutoplay();
+      }, 0);
     }
 
     return () => {
+      if (initTimer) {clearTimeout(initTimer);}
       clearTimers();
       emblaApi.off('select', onSelect);
       emblaApi.off('pointerDown', stop);
@@ -91,5 +100,5 @@ export const useHeroAutoplay = (
     };
   }, [emblaApi, isPaused, startAutoplay, clearTimers]);
 
-  return isTextVisible;
+  return isPaused || internalIsTextVisible;
 };

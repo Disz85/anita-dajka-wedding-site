@@ -23,7 +23,6 @@ const NavButton = ({
 }: {
   onClick: () => void;
   direction: 'left' | 'right';
-  label: string;
 }) => {
   const t = useTranslations('carousel.highlights');
   const isRight = direction === 'right';
@@ -80,8 +79,8 @@ const NavButton = ({
 export const HighlightsNavigation = ({ onPrev, onNext }: HighlightsNavigationProps) => {
   return (
     <div className="hidden md:flex justify-between items-center px-6 -mt-6">
-      <NavButton direction="left" onClick={onPrev} label="Prev" />
-      <NavButton direction="right" onClick={onNext} label="Next" />
+      <NavButton direction="left" onClick={onPrev} />
+      <NavButton direction="right" onClick={onNext} />
     </div>
   );
 };

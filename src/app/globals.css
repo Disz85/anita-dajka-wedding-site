@@ -134,7 +134,7 @@
 
   .text-fluid-subtitle {
     font-size: clamp(0.625rem, 1.25vw, 0.75rem); /* 10px - 12px */
-    color: #888888;
+    color: var(--footer-handle);
   }
 
   .text-intro-body {
