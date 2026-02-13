@@ -18,7 +18,7 @@ export const StorySection = ({ data }: StorySectionProps) => {
 
   return (
     <Section spacing="sm">
-      <div className="mx-auto flex flex-col relative w-[81.667vw] gap-[0.833vw]">
+      <div className="mx-0 md:mx-auto flex flex-col relative w-full md:w-[81.667vw] gap-[10vw] md:gap-[0.833vw]">
         {data.items.map((item) => {
           const isLeft = item.layout === 'left' || item.layout === 'left-bottom';
           const isBottom = item.layout === 'left-bottom' || item.layout === 'right-bottom';
@@ -37,13 +37,19 @@ export const StorySection = ({ data }: StorySectionProps) => {
                 : 'md:order-3 md:col-start-3',
           );
 
+          const sideItemAlignmentClassName = isLeft ? 'self-start ml-8' : 'self-end mr-8';
+
           const imageContainerClassName = clsx(
-            'w-[35%] -mt-36 z-10',
-            isLeft ? 'self-start ml-4' : 'self-end mr-4',
+            'w-[35%] -mt-[25%] z-10',
+            sideItemAlignmentClassName,
             'md:w-full md:mt-0 md:bg-transparent md:self-auto md:ml-0 md:mr-0',
           );
 
-          const contentContainerClassName = clsx('m-2 px-4', 'md:m-0 md:px-0');
+          const contentContainerClassName = clsx(
+            'mt-2 w-[35%]',
+            sideItemAlignmentClassName,
+            'md:ml-0 md:mr-0 md:mt-0 md:w-[initial]',
+          );
 
           return (
             <article
