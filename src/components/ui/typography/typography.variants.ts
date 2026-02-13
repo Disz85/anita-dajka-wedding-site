@@ -14,6 +14,7 @@ export const typographyVariants = cva('', {
       muted: 'font-body text-sm text-muted-foreground',
       nav: 'font-nav text-sm uppercase tracking-widest',
       subtitle: 'font-subtitle text-xs uppercase tracking-[0.2em] text-muted-foreground',
+      action: 'font-body text-xs uppercase tracking-[0.15em] text-muted-foreground/80',
       introBody: 'font-body text-[14px] leading-[1.5] tracking-[0.05em]',
       videoTitle:
         'font-heading text-[clamp(25px,8vw,100px)] leading-none tracking-[0.05em] font-light',

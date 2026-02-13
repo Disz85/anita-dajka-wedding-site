@@ -92,7 +92,9 @@ export const useHeroAutoplay = (
     }
 
     return () => {
-      if (initTimer) {clearTimeout(initTimer);}
+      if (initTimer) {
+        clearTimeout(initTimer);
+      }
       clearTimers();
       emblaApi.off('select', onSelect);
       emblaApi.off('pointerDown', stop);

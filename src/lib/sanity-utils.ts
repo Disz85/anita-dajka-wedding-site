@@ -1,10 +1,5 @@
-import { LocalizedString } from '@/sanity/queries/home.queries';
 import type { PortableTextBlock } from 'next-sanity';
 
-/**
- * Safely extracts a localized value from a Sanity object.
- * Returns the requested locale version, or falls back to 'hu', or returns undefined.
- */
 export const getLocalizedValue = <T>(
   value: { hu?: T; en?: T } | undefined | null,
   locale: string,

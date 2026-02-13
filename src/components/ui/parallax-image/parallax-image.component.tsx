@@ -11,6 +11,7 @@ export const ParallaxImage = ({
   containerClassName,
   parallaxIntensity = 10,
   priority = false,
+  alt,
   ...props
 }: ParallaxImageProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -38,6 +39,7 @@ export const ParallaxImage = ({
       >
         <Image
           {...props}
+          alt={alt}
           className={cn('object-cover w-full h-full', className)}
           priority={priority}
           onLoad={(e) => {

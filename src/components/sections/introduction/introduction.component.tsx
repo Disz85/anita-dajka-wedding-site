@@ -9,7 +9,7 @@ import { Section } from '@/components/ui/section/section.component';
 import { Button } from '@/components/ui/button/button.component';
 import { LongArrowRight } from '@/components/ui/icons/long-arrows/long-arrows.component';
 import { getLocalizedValue } from '@/lib/sanity-utils';
-import { Link } from '@/i18n/i18n.navigation';
+import { DynamicLink } from '@/components/ui/link/dynamic-link.component';
 import { CustomPortableText } from '@/components/ui/typography/portable-text.component';
 import { animationVariants, textVariants } from './introduction.variants';
 import { IntroductionProps } from './introduction.types';
@@ -77,10 +77,10 @@ export const Introduction = ({ data }: IntroductionProps) => {
                   asChild
                   className="group p-0 h-auto font-sans tracking-widest uppercase text-xs hover:no-underline"
                 >
-                  <Link href={ctaUrl} className="flex items-center gap-6 text-foreground">
+                  <DynamicLink href={ctaUrl} className="flex items-center gap-6 text-foreground">
                     <span className="tracking-[0.2em]">{currentCtaLabel}</span>
                     <LongArrowRight className="w-16 h-auto text-foreground group-hover:translate-x-2 transition-transform duration-300" />
-                  </Link>
+                  </DynamicLink>
                 </Button>
               </div>
             )}

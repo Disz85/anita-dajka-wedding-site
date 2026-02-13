@@ -34,30 +34,16 @@ export async function generateMetadata({
   };
 }
 
-/**
- * Locale Layout Component
- *
- * This layout wraps all pages for a specific locale.
- * It handles:
- * - HTML lang attribute based on locale
- * - Global Font injection (CSS variables)
- * - NextIntlClientProvider for translations
- * - Server-side CMS data fetching for header and settings
- * - Global styles application
- */
 export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
 
-  // Ensure that the incoming `locale` is valid
   const localeSet = new Set(routing.locales as readonly string[]);
   if (!localeSet.has(locale)) {
     notFound();
   }
 
-  // Enable static rendering
   setRequestLocale(locale);
 
-  // Fetch messages and CMS data in parallel using Data Access Layer
   const [messages, headerData, footerData, settings] = await Promise.all([
     getMessages(),
     getHeaderData(),
@@ -68,7 +54,6 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html lang={locale} suppressHydrationWarning>
       <body
-        suppressHydrationWarning
         className={`${cormorant.variable} ${lora.variable} ${proza.variable} ${raleway.variable} font-body text-primary antialiased bg-background`}
       >
         <NextIntlClientProvider messages={messages}>

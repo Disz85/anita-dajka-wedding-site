@@ -7,7 +7,6 @@ import { Button } from '@/components/ui/button/button.component';
 import { PortfolioCategoryItemProps } from './portfolio-categories.types';
 import { ParallaxImage } from '@/components/ui/parallax-image/parallax-image.component';
 import { cn } from '@/lib/utils';
-
 import { useLocale, useTranslations } from 'next-intl';
 import { getLocalizedValue } from '@/lib/sanity-utils';
 
@@ -42,13 +41,7 @@ export const PortfolioCategoryItem = ({ item }: PortfolioCategoryItemProps) => {
           <Typography variant="portfolioTitle" tone="white" className="drop-shadow-sm uppercase">
             {title}
           </Typography>
-          <div
-            className={cn(
-              'flex w-full',
-              // Always center the button relative to the text block
-              'justify-center',
-            )}
-          >
+          <div className={cn('flex w-full', 'justify-center')}>
             <Button variant="outline-white" size="default" className="uppercase">
               <span className="relative z-10">{t('browse')}</span>
             </Button>

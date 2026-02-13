@@ -1,4 +1,4 @@
-import { PortfolioItem } from '@/types/portfolio.types';
+import { type PortfolioItem } from '@/sanity/queries/page.queries';
 
 export type PortfolioCategoriesProps = {
   items: PortfolioItem[];

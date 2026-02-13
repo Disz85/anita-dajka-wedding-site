@@ -1,4 +1,5 @@
-import type { HeaderData, SiteSettings } from '@/sanity/queries';
+import type { HeaderData } from '@/sanity/queries/header.queries';
+import type { SiteSettings } from '@/sanity/queries/settings.queries';
 
 export type HeaderProps = {
   transparent?: boolean;

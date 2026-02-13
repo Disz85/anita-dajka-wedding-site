@@ -1,16 +1,6 @@
 import { cache } from 'react';
 import { client } from './client';
 
-/**
- * Cached fetch wrapper for Sanity queries.
- *
- * Uses React's cache() for request deduplication within a single render,
- * and Next.js revalidate for ISR caching.
- *
- * @param query - GROQ query string
- * @param params - Query parameters (optional)
- * @param revalidate - Revalidation interval in seconds (default: 60)
- */
 export const sanityFetch = cache(
   async <T>(
     query: string,

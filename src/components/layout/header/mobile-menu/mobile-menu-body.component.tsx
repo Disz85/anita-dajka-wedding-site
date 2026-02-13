@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from '@/i18n/i18n.navigation';
+import { DynamicLink } from '@/components/ui/link/dynamic-link.component';
 import type { MobileMenuBodyProps } from './mobile-menu.types';
-import type { NavLink } from '@/sanity/queries';
+import type { NavLink } from '@/sanity/queries/header.queries';
 import { menuListVariants, menuItemVariants } from './mobile-menu.variants';
 import { getLocalizedText } from '@/lib/i18n.utils';
 
@@ -22,9 +22,9 @@ const NavItem = ({ item, locale }: { item: NavLink; locale: string }): React.JSX
   }
 
   return (
-    <Link href={item.href || '#'} className={className}>
+    <DynamicLink href={item.href || '#'} className={className}>
       {label}
-    </Link>
+    </DynamicLink>
   );
 };
 

@@ -1,10 +1,6 @@
 import { sanityFetch } from '@/sanity/fetch';
-import { getPortfolioPageQuery } from '@/sanity/queries';
-import { PortfolioPageData } from '@/types/portfolio.types';
+import { getPortfolioPageQuery, type PortfolioPageData } from '@/sanity/queries/page.queries';
 
-/**
- * Data Access Layer for Portfolio Page content
- */
 export async function getPortfolioPageData(): Promise<PortfolioPageData> {
   return sanityFetch<PortfolioPageData>(
     getPortfolioPageQuery,

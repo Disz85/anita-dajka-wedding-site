@@ -5,6 +5,6 @@ export type LocalizedString = {
 
 export type PageHeaderProps = {
   title: string;
-  subtitle: string;
+  subtitle?: string;
   description?: LocalizedString;
 };

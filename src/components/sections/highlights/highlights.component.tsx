@@ -4,7 +4,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { HighlightsCarousel } from '@/components/sections/highlights/components/carousel/highlights-carousel.component';
 import { Section } from '@/components/ui/section/section.component';
 import { HighlightItem } from '@/components/sections/highlights/components/carousel/highlights-carousel.types';
-import { HighlightsSectionData, SanityHighlightItem } from '@/sanity/queries/home.queries';
+import { SanityHighlightItem } from '@/sanity/queries/home.queries';
 import { getLocalizedValue } from '@/lib/sanity-utils';
 
 import { HighlightsProps } from './highlights.types';

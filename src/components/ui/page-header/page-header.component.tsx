@@ -12,9 +12,9 @@ export const PageHeader = ({ title, subtitle, description }: PageHeaderProps) =>
   const currentDescription = getLocalizedValue(description, locale);
 
   return (
-    <Section className="pb-10 pt-24 md:pb-20">
+    <Section spacing="sm">
       <Container size="narrow" className="flex flex-col items-center text-center space-y-6">
-        <Typography variant="pageSubtitle">{subtitle}</Typography>
+        {subtitle && <Typography variant="pageSubtitle">{subtitle}</Typography>}
         <Typography variant="pageTitle">{title}</Typography>
         {currentDescription && (
           <Typography variant="pageDescription" className="max-w-xl mx-auto">

@@ -1,4 +1,4 @@
-import type { NavLink } from '@/sanity/queries';
+import type { NavLink } from '@/sanity/queries/header.queries';
 
 export type DesktopMenuProps = {
   leftNavigation: NavLink[];

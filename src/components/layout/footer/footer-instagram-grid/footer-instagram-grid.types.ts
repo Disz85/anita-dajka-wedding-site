@@ -1,4 +1,4 @@
-import type { FooterImage } from '@/sanity/queries';
+import type { FooterImage } from '@/sanity/queries/footer.queries';
 
 export type FooterInstagramGridProps = {
   images: FooterImage[];

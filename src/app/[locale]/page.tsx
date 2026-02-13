@@ -11,10 +11,8 @@ import { PageProps } from '@/types/page.types';
 export default async function Home({ params }: PageProps) {
   const { locale } = await params;
 
-  // Enable static rendering
   setRequestLocale(locale);
 
-  // Fetch data using Data Access Layer
   const [, homeData] = await Promise.all([getSiteSettings(), getHomePageData()]);
 
   return (

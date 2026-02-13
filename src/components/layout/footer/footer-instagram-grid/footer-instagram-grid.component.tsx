@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import type { FooterInstagramGridProps } from './footer-instagram-grid.types';
-import type { FooterImage } from '@/sanity/queries';
+import type { FooterImage } from '@/sanity/queries/footer.queries';
 
 export const FooterInstagramGrid = ({
   images,

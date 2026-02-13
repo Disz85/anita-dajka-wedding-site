@@ -1,8 +1,7 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
-import Image from 'next/image';
-import { motion, useScroll } from 'framer-motion';
+import { useState, useRef } from 'react';
+import { motion } from 'framer-motion';
 import { HeroSlideProps } from '../carousel/hero-carousel.types';
 import { ParallaxImage } from '@/components/ui/parallax-image/parallax-image.component';
 import { HERO_STYLES } from '../carousel/hero-carousel.config';
@@ -14,11 +13,6 @@ export const HeroSlide = ({ item, index, total, isActive, isFirst }: HeroSlidePr
   const t = useTranslations('carousel.hero');
   const [isLoaded, setIsLoaded] = useState(false);
   const containerRef = useRef<HTMLLIElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end start'],
-  });
 
   const TitleTag = isFirst ? 'h1' : 'h2';
 

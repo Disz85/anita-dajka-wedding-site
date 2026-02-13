@@ -56,7 +56,12 @@
     "sectionLabel": "Kind Words"
   },
   "portfolio": {
-    "browse": "Browse portfolio"
+    "browse": "Browse portfolio",
+    "sectionLabel": "Portfolio"
+  },
+  "gallery": {
+    "sectionLabel": "Wedding Gallery",
+    "viewGallery": "view gallery"
   },
   "highlights": {
     "sectionLabel": "Selected Works"

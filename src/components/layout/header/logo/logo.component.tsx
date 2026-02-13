@@ -28,6 +28,7 @@ export const Logo = ({
           width={160}
           height={40}
           className="h-10 w-auto object-contain"
+          sizes="160px"
           priority
         />
       </Link>

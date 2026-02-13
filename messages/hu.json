@@ -58,7 +58,12 @@
     "sectionLabel": "Kedves szavak"
   },
   "portfolio": {
-    "browse": "Portfólió megtekintése"
+    "browse": "Portfólió megtekintése",
+    "sectionLabel": "Portfólió"
+  },
+  "gallery": {
+    "sectionLabel": "Esküvői Galéria",
+    "viewGallery": "galéria megtekintése"
   },
   "highlights": {
     "sectionLabel": "Kiemelt munkák"

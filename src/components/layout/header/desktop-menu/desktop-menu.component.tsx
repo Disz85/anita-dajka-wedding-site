@@ -6,8 +6,10 @@ import { cn } from '@/lib/utils';
 import { Logo } from '../logo/logo.component';
 import { LanguageSwitcher } from '@/components/layout/header/language-switcher/language-switcher.component';
 import type { DesktopMenuProps } from './desktop-menu.types';
-import type { NavLink } from '@/sanity/queries';
+import type { NavLink } from '@/sanity/queries/header.queries';
 import { getLocalizedText } from '@/lib/i18n.utils';
+
+import { isAppPathname } from '@/i18n/i18n.routing';
 
 const baseLinkClassName =
   'font-nav text-xs uppercase tracking-[0.2em] transition-opacity duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2';
@@ -22,17 +24,23 @@ const NavItem = ({ item, locale }: { item: NavLink; locale: string }): React.JSX
     : cn(baseLinkClassName, 'hover:opacity-60');
 
   const content = item.isHighlighted ? <span className="relative z-10">{label}</span> : label;
+  const href = item.href || '#';
 
-  if (item.isExternal) {
+  if (item.isExternal || !isAppPathname(href)) {
     return (
-      <a href={item.href || '#'} target="_blank" rel="noopener noreferrer" className={className}>
+      <a
+        href={href}
+        target={item.isExternal ? '_blank' : undefined}
+        rel={item.isExternal ? 'noopener noreferrer' : undefined}
+        className={className}
+      >
         {content}
       </a>
     );
   }
 
   return (
-    <Link href={item.href || '#'} className={className}>
+    <Link href={href} className={className}>
       {content}
     </Link>
   );

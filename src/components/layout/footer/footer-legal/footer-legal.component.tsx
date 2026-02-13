@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Link } from '@/i18n/i18n.navigation';
+import { DynamicLink } from '@/components/ui/link/dynamic-link.component';
 import type { FooterLegalProps } from './footer-legal.types';
 
 const linkClassName =
@@ -15,12 +15,13 @@ export const FooterLegal = ({
 }: FooterLegalProps): React.JSX.Element => {
   return (
     <nav aria-label="Legal and privacy" className="mt-4 flex gap-6 justify-center">
-      <Link href={privacyHref} className={linkClassName}>
+      <DynamicLink href={privacyHref} className={linkClassName}>
         {privacyLabel}
-      </Link>
-      <Link href={legalHref} className={linkClassName}>
+      </DynamicLink>
+
+      <DynamicLink href={legalHref} className={linkClassName}>
         {impressumLabel}
-      </Link>
+      </DynamicLink>
     </nav>
   );
 };

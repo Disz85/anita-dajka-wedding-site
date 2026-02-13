@@ -22,4 +22,5 @@ export const defaultElementMap: Record<
   pageSubtitle: 'p',
   pageDescription: 'p',
   portfolioTitle: 'h3',
+  action: 'span',
 };

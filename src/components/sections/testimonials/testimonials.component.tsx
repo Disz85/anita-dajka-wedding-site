@@ -1,6 +1,6 @@
 'use client';
 
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { Container } from '@/components/ui/container/container.component';
 import { Section } from '@/components/ui/section/section.component';
 import { TestimonialsCarousel } from './components/carousel/testimonials-carousel.component';
@@ -8,7 +8,6 @@ import { TestimonialsProps } from './testimonials.types';
 
 export const Testimonials = ({ data }: TestimonialsProps) => {
   const t = useTranslations('testimonials');
-  const locale = useLocale();
 
   if (!data) {
     return null;
