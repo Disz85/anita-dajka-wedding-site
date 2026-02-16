@@ -75,6 +75,5 @@ const Calendar = memo(
     );
   },
 );
-Calendar.displayName = 'Calendar';
 
 export { Calendar };
