@@ -5,6 +5,10 @@ Designed to replace the previous Showit site with a faster, more flexible, and S
 
 ## 🚀 Tech Stack
 
+## 📚 Documentation
+
+- [How the Contact System Works](docs/CONTACT_SYSTEM_HU.md) (Kapcsolati űrlap működése)
+
 - **Framework:** Next.js (App Router)
 - **Styling:** Tailwind CSS (v4)
 - **CMS Client:** `next-sanity`
@@ -37,6 +41,9 @@ Fill in the required values in `.env.local`:
 
 - `NEXT_PUBLIC_SANITY_PROJECT_ID`: Your Sanity Project ID
 - `NEXT_PUBLIC_SANITY_DATASET`: `production` or `development`
+- `SANITY_API_TOKEN`: Sanity API token with write permissions (for contact form)
+- `RESEND_API_KEY`: API key for Resend email service
+- `CONTACT_TO_EMAIL`: Email address to receive inquiries
 
 ### 4. Running Locally
 

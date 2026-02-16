@@ -166,6 +166,13 @@ export const getPageBySlugQuery = groq`
           description,
           layout
         }
+      },
+
+      // Contact Section
+      _type == "contactSection" => {
+        title,
+        subtitle,
+        redirectUrl
       }
     },
     seo {
@@ -182,6 +189,19 @@ import {
   VideoSectionData,
   TestimonialsSectionData,
 } from './home.queries';
+
+export type ContactSectionData = {
+  title?: {
+    hu?: string;
+    en?: string;
+  };
+  subtitle?: {
+    hu?: string;
+    en?: string;
+  };
+  redirectUrl?: string;
+};
+
 export type PortfolioItem = {
   _key: string;
   title: {
@@ -324,7 +344,8 @@ export type SectionData =
   | ({ _type: 'portfolioSection' } & BaseSection & PortfolioPageData)
   | ({ _type: 'testimonialsSection' } & BaseSection & TestimonialsSectionData)
   | ({ _type: 'gallerySection' } & BaseSection & GallerySectionData)
-  | ({ _type: 'storySection' } & BaseSection & StorySectionData);
+  | ({ _type: 'storySection' } & BaseSection & StorySectionData)
+  | ({ _type: 'contactSection' } & BaseSection & ContactSectionData);
 
 type LocalizedString = {
   hu?: string;

@@ -16,12 +16,68 @@
     "selectLanguage": "Select language"
   },
   "contact": {
+    "email": {
+      "confirmation": {
+        "subject": "Thank you for your inquiry - Anita Dajka",
+        "greeting": "Hi {name},",
+        "body1": "Thank you for reaching out! I have received your inquiry and will get back to you as soon as possible, usually within 24-48 hours.",
+        "body2": "In the meantime, feel free to browse my portfolio on the website.",
+        "closing": "Best regards,",
+        "signature": "Anita Dajka"
+      },
+      "notification": {
+        "subject": "New Contact Form Submission: {name} - {serviceType}"
+      }
+    },
     "title": "Contact",
     "phoneLabel": "Call: {phone}",
     "emailLabel": "Send email to: {email}",
     "instagramLabel": "Follow on Instagram",
     "facebookLabel": "Follow on Facebook",
-    "socialLinksLabel": "Social media links"
+    "socialLinksLabel": "Social media links",
+    "thankYouTitle": "Thank You!",
+    "thankYouDescription": "I will get back to you as soon as possible, usually within 24-48 hours.",
+    "validation": {
+      "nameRequired": "Name is required",
+      "emailInvalid": "Invalid email address",
+      "serviceTypeRequired": "Please select a service type",
+      "messageMin": "Message must be at least 10 characters"
+    },
+    "form": {
+      "nameLabel": "Name",
+      "emailLabel": "Email",
+      "phoneLabel": "Phone",
+      "serviceTypeLabel": "Service Type",
+      "eventDateLabel": "Event Date",
+      "locationLabel": "Location / Venue",
+      "messageLabel": "Message",
+      "locationPlaceholder": "City, Country or Venue Name",
+      "referralSourceLabel": "How did you hear about me?",
+      "messagePlaceholder": "Tell me a bit about your plans...",
+      "selectServicePlaceholder": "Select a service...",
+      "pickDatePlaceholder": "Pick a date...",
+      "submitButton": "Send Message",
+      "submittingButton": "Sending...",
+      "privacyText": "By submitting this form, you agree to the processing of your personal data for the purpose of responding to your inquiry.",
+      "privacyPolicyLink": "Read our Privacy Policy",
+      "contactDetailsLegend": "Contact Details",
+      "eventDetailsLegend": "Event Details",
+      "messageLegend": "Your Message",
+      "calendar": {
+        "year": "Year",
+        "month": "Month",
+        "clear": "Clear Dates",
+        "save": "Save",
+        "prevMonth": "Previous Month",
+        "nextMonth": "Next Month"
+      },
+      "services": {
+        "wedding": "Wedding Photography",
+        "elopement": "Elopement",
+        "couple": "Couple Session",
+        "other": "Other"
+      }
+    }
   },
   "notFound": {
     "message": "Page not found",

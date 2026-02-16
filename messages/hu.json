@@ -18,12 +18,68 @@
     "selectLanguage": "Nyelv kiválasztása"
   },
   "contact": {
+    "email": {
+      "confirmation": {
+        "subject": "Köszönöm a megkeresést - Dajka Anita",
+        "greeting": "Szia {name},",
+        "body1": "Köszönöm a megkeresésedet! Megkaptam az üzenetedet, és amint lehetséges, válaszolok (általában 24-48 órán belül).",
+        "body2": "Addig is, nyugodtan nézz körül a portfóliómban a weboldalon.",
+        "closing": "Üdvözlettel,",
+        "signature": "Dajka Anita"
+      },
+      "notification": {
+        "subject": "Új kapcsolatfelvétel: {name} - {serviceType}"
+      }
+    },
     "title": "Kapcsolat",
     "phoneLabel": "Hívás: {phone}",
     "emailLabel": "Email küldése: {email}",
     "instagramLabel": "Követés Instagramon",
     "facebookLabel": "Követés Facebookon",
-    "socialLinksLabel": "Közösségi média linkek"
+    "socialLinksLabel": "Közösségi média linkek",
+    "thankYouTitle": "Köszönöm!",
+    "thankYouDescription": "Hamarosan válaszolok, általában 24-48 órán belül.",
+    "validation": {
+      "nameRequired": "Név megadása kötelező",
+      "emailInvalid": "Érvénytelen email cím",
+      "serviceTypeRequired": "Kérlek válassz szolgáltatást",
+      "messageMin": "Az üzenetnek legalább 10 karakter hosszúnak kell lennie"
+    },
+    "form": {
+      "nameLabel": "Név",
+      "emailLabel": "Email",
+      "phoneLabel": "Telefonszám",
+      "serviceTypeLabel": "Szolgáltatás típusa",
+      "eventDateLabel": "Esemény dátuma",
+      "locationLabel": "Helyszín / Város",
+      "messageLabel": "Üzenet",
+      "locationPlaceholder": "Város, Ország vagy Helyszín neve",
+      "referralSourceLabel": "Hol hallottál rólam?",
+      "messagePlaceholder": "Mesélj egy kicsit a terveitekről...",
+      "selectServicePlaceholder": "Válassz szolgáltatást...",
+      "pickDatePlaceholder": "Válassz dátumot...",
+      "submitButton": "Üzenet küldése",
+      "submittingButton": "Küldés...",
+      "privacyText": "Az űrlap elküldésével hozzájárulsz, hogy az adataidat a válaszadás céljából kezeljem.",
+      "privacyPolicyLink": "Adatkezelési tájékoztató",
+      "contactDetailsLegend": "Kapcsolatfelvételi adatok",
+      "eventDetailsLegend": "Esemény részletei",
+      "messageLegend": "Az Ön üzenete",
+      "calendar": {
+        "year": "Év",
+        "month": "Hónap",
+        "clear": "Dátum törlése",
+        "save": "Mentés",
+        "prevMonth": "Előző hónap",
+        "nextMonth": "Következő hónap"
+      },
+      "services": {
+        "wedding": "Esküvői fotózás",
+        "elopement": "Elopement",
+        "couple": "Jegyes fotózás",
+        "other": "Egyéb"
+      }
+    }
   },
   "notFound": {
     "message": "Az oldal nem található",

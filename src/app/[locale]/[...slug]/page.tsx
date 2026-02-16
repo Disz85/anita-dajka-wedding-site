@@ -32,11 +32,18 @@ export const generateMetadata = async ({ params }: SlugPageProps): Promise<Metad
   };
 };
 
+import { getSiteSettings } from '@/data-access/settings';
+
+// ... (imports remain)
+
 const Page = async ({ params }: SlugPageProps) => {
   const { slug, locale } = await params;
-  const page = await sanityFetch<PageData>(getPageBySlugQuery, {
-    slug: Array.isArray(slug) ? slug.join('/') : slug,
-  });
+  const [page, settings] = await Promise.all([
+    sanityFetch<PageData>(getPageBySlugQuery, {
+      slug: Array.isArray(slug) ? slug.join('/') : slug,
+    }),
+    getSiteSettings(),
+  ]);
 
   if (!page) {
     notFound();
@@ -50,7 +57,7 @@ const Page = async ({ params }: SlugPageProps) => {
       {hasPageHeader && (
         <PageHeader title={page.title} subtitle={currentSubtitle} description={page.description} />
       )}
-      <SectionRenderer sections={page.sections} />
+      <SectionRenderer sections={page.sections} settings={settings} />
     </main>
   );
 };

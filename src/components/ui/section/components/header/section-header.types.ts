@@ -10,5 +10,7 @@ export type SectionHeaderProps = {
   headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
   subtitleTag?: 'span' | 'p' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   subtitlePosition?: 'top' | 'bottom';
-  titleSize?: 'default' | 'small';
+  titleSize?: 'default' | 'small' | 'contact';
+  align?: 'left' | 'center' | 'right' | 'responsive';
+  subtitleTone?: 'default' | 'primary' | 'secondary' | 'muted' | 'accent' | 'white';
 } & VariantProps<typeof containerVariants>;

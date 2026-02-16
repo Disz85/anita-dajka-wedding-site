@@ -6,9 +6,18 @@ import { PortfolioSection } from './portfolio/portfolio-section.component';
 import { Testimonials } from './testimonials/testimonials.component';
 import { GallerySection } from './gallery/gallery-section.component';
 import { StorySection } from './story/story-section.component';
+import { ContactSection } from './contact/contact-section.component';
 import { SectionData } from '@/sanity/queries/page.queries';
 
-export const SectionRenderer = ({ sections }: { sections: SectionData[] }) => {
+import { SiteSettings } from '@/sanity/queries/settings.queries';
+
+export const SectionRenderer = ({
+  sections,
+  settings,
+}: {
+  sections: SectionData[];
+  settings: SiteSettings;
+}) => {
   if (!sections) {
     return null;
   }
@@ -35,6 +44,8 @@ export const SectionRenderer = ({ sections }: { sections: SectionData[] }) => {
             return <GallerySection key={_key} data={section} />;
           case 'storySection':
             return <StorySection key={_key} data={section} />;
+          case 'contactSection':
+            return <ContactSection key={_key} data={section} settings={settings} />;
           default:
             console.warn(`Unknown section type: ${_type}`);
             return null;
