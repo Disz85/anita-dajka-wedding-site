@@ -31,3 +31,4 @@ export const CalendarFooter = memo(
     );
   },
 );
+CalendarFooter.displayName = 'CalendarFooter';

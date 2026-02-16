@@ -94,3 +94,5 @@ export const CalendarMonthPicker = memo(
     );
   },
 );
+
+CalendarMonthPicker.displayName = 'CalendarMonthPicker';

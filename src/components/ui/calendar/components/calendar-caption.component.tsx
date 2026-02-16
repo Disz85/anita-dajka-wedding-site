@@ -66,3 +66,4 @@ export const CalendarCaption = memo(
     );
   },
 );
+CalendarCaption.displayName = 'CalendarCaption';
