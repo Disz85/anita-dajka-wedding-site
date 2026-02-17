@@ -9,7 +9,9 @@ const corsHeaders = {
 
 const ALLOWED_ORIGINS = ['http://localhost:3000', process.env.NEXT_PUBLIC_SITE_URL];
 
-// Simple in-memory rate limiter
+// Simple in-memory rate limiter.
+// NOTE: In a serverless environment (like Vercel), this Map will be reset frequently.
+// For production-grade rate limiting, use a persistent store like Upstash Redis or Vercel KV.
 const rateLimitMap = new Map<string, number[]>();
 const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
 const MAX_REQUESTS_PER_WINDOW = 20;

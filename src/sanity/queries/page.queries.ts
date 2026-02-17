@@ -173,6 +173,24 @@ export const getPageBySlugQuery = groq`
         title,
         subtitle,
         redirectUrl
+      },
+
+      // Masonry Gallery Section
+      _type == "masonryGallerySection" => {
+        title,
+        description,
+        items[] {
+          _key,
+          image {
+            asset-> {
+              url,
+              metadata {
+                lqip,
+                dimensions { width, height }
+              }
+            }
+          }
+        }
       }
     },
     seo {
@@ -288,6 +306,34 @@ export type GallerySectionData = {
   items: GalleryItem[];
 };
 
+export type MasonryGalleryItem = {
+  _key: string;
+  image: {
+    asset: {
+      url: string;
+      metadata: {
+        lqip?: string;
+        dimensions: {
+          width: number;
+          height: number;
+        };
+      };
+    };
+  };
+};
+
+export type MasonryGallerySectionData = {
+  title?: {
+    hu?: string;
+    en?: string;
+  };
+  description?: {
+    hu?: string;
+    en?: string;
+  };
+  items: MasonryGalleryItem[];
+};
+
 export type StoryItem = {
   _key: string;
   mainImage: {
@@ -345,7 +391,8 @@ export type SectionData =
   | ({ _type: 'testimonialsSection' } & BaseSection & TestimonialsSectionData)
   | ({ _type: 'gallerySection' } & BaseSection & GallerySectionData)
   | ({ _type: 'storySection' } & BaseSection & StorySectionData)
-  | ({ _type: 'contactSection' } & BaseSection & ContactSectionData);
+  | ({ _type: 'contactSection' } & BaseSection & ContactSectionData)
+  | ({ _type: 'masonryGallerySection' } & BaseSection & MasonryGallerySectionData);
 
 type LocalizedString = {
   hu?: string;

@@ -84,17 +84,10 @@ export const useHeroAutoplay = (
     emblaApi.on('pointerDown', stop);
     emblaApi.on('pointerUp', resume);
 
-    let initTimer: NodeJS.Timeout;
-    if (!isPaused) {
-      initTimer = setTimeout(() => {
-        startAutoplay();
-      }, 0);
-    }
+    const initTimer = !isPaused ? setTimeout(startAutoplay, 0) : undefined;
 
     return () => {
-      if (initTimer) {
-        clearTimeout(initTimer);
-      }
+      clearTimeout(initTimer);
       clearTimers();
       emblaApi.off('select', onSelect);
       emblaApi.off('pointerDown', stop);

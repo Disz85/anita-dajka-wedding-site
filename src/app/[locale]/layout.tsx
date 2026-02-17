@@ -26,11 +26,17 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const messages = (await import(`../../../messages/${locale}.json`)).default;
+  const [messages, settings] = await Promise.all([
+    (await import(`../../../messages/${locale}.json`)).default,
+    getSiteSettings(),
+  ]);
 
   return {
-    title: messages.metadata.title,
-    description: messages.metadata.description,
+    title: {
+      template: `%s | ${settings.siteTitle || messages.metadata.title}`,
+      default: settings.siteTitle || messages.metadata.title,
+    },
+    description: settings.siteDescription || messages.metadata.description,
   };
 }
 

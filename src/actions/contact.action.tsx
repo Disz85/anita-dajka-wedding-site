@@ -65,7 +65,9 @@ export async function submitContactAction(
       const ownerEmail = process.env.CONTACT_TO_EMAIL;
       if (ownerEmail) {
         await resend.emails.send({
-          from: 'Anita Dajka Wedding Photography <onboarding@resend.dev>',
+          from:
+            process.env.RESEND_FROM_EMAIL ||
+            'Anita Dajka Wedding Photography <onboarding@resend.dev>',
           to: ownerEmail,
           subject: `New Inquiry: ${validData.name}`,
           react: <ContactNotificationEmail data={validData} />,
@@ -76,7 +78,9 @@ export async function submitContactAction(
       // Confirmation to user
       const tEmail = await getTranslations({ locale, namespace: 'contact.email.confirmation' });
       await resend.emails.send({
-        from: 'Anita Dajka Wedding Photography <onboarding@resend.dev>',
+        from:
+          process.env.RESEND_FROM_EMAIL ||
+          'Anita Dajka Wedding Photography <onboarding@resend.dev>',
         to: validData.email,
         subject: tEmail('subject'),
         react: (

@@ -18,7 +18,11 @@ export const StorySection = ({ data }: StorySectionProps) => {
 
   return (
     <Section spacing="sm">
-      <div className="mx-0 md:mx-auto flex flex-col relative w-full md:w-[81.667vw] gap-[10vw] md:gap-[0.833vw]">
+      <Section.Inner
+        size="viewport"
+        withPadding={false}
+        className="flex flex-col relative gap-[10vw] md:gap-[0.833vw]"
+      >
         {data.items.map((item) => {
           const isLeft = item.layout === 'left' || item.layout === 'left-bottom';
           const isBottom = item.layout === 'left-bottom' || item.layout === 'right-bottom';
@@ -73,7 +77,7 @@ export const StorySection = ({ data }: StorySectionProps) => {
             </article>
           );
         })}
-      </div>
+      </Section.Inner>
     </Section>
   );
 };

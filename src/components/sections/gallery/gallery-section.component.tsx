@@ -28,7 +28,9 @@ export const GallerySection = ({ data }: GallerySectionProps) => {
       {currentDescription && (
         <Section.Description className="mb-16">{currentDescription}</Section.Description>
       )}
-      <GalleryGrid items={items} />
+      <Section.Inner size="content" withPadding>
+        <GalleryGrid items={items} />
+      </Section.Inner>
     </Section>
   );
 };

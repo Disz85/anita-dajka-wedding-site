@@ -16,10 +16,6 @@ export const sectionVariants = cva('w-full relative', {
       secondary: 'bg-secondary text-secondary-foreground',
       'warm-white': 'bg-warm-white',
     },
-    container: {
-      true: '',
-      false: '',
-    },
   },
   defaultVariants: {
     spacing: 'default',

@@ -319,9 +319,3 @@ export type AllSanitySchemaTypes =
   | SanityAssetSourceData;
 
 export declare const internalGroqTypeReferenceTo: unique symbol;
-
-type ArrayOf<T> = Array<
-  T & {
-    _key: string;
-  }
->;

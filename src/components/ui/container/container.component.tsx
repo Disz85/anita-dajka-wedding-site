@@ -7,10 +7,14 @@ export const Container = ({
   className,
   size,
   withPaddingForDesktop,
+  withPadding,
   ...props
 }: ContainerProps) => {
   return (
-    <div className={cn(containerVariants({ size, withPaddingForDesktop, className }))} {...props}>
+    <div
+      className={cn(containerVariants({ size, withPaddingForDesktop, withPadding, className }))}
+      {...props}
+    >
       {children}
     </div>
   );
