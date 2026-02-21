@@ -14,6 +14,7 @@ import { motion, type HTMLMotionProps } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { type MasonryGalleryProps } from './masonry-gallery.types';
 import { MASONRY_CONFIG } from './masonry-gallery.config';
+import { masonryItemAnimation } from './masonry-gallery.animations';
 
 export const MasonryGallery = ({ images }: MasonryGalleryProps) => {
   const t = useTranslations('gallery');
@@ -87,15 +88,9 @@ export const MasonryGallery = ({ images }: MasonryGalleryProps) => {
 
       return (
         <motion.div
-          style={{ ...style, position: 'relative' }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          layout
-          transition={{
-            opacity: { duration: 0.5, delay: (index % MASONRY_CONFIG.LOAD_MORE_INCREMENT) * 0.05 },
-            layout: { duration: 0.3 },
-          }}
-          className="group cursor-pointer overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          style={style}
+          {...masonryItemAnimation(index)}
+          className="relative group cursor-pointer overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           role="button"
           tabIndex={0}
           aria-label={photo.alt || t('viewGallery')}

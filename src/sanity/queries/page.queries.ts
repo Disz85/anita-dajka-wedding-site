@@ -1,4 +1,4 @@
-import { groq } from 'next-sanity';
+import { groq, PortableTextBlock } from 'next-sanity';
 
 export const getPageBySlugQuery = groq`
   *[_type == "page" && slug.current == $slug][0] {
@@ -191,6 +191,34 @@ export const getPageBySlugQuery = groq`
             }
           }
         }
+      },
+
+      // About Section
+      _type == "aboutSection" => {
+        title,
+        prologue,
+        quote,
+        description,
+        mainImage {
+          asset-> {
+            url,
+            metadata {
+              lqip,
+              dimensions { width, height }
+            }
+          },
+          alt
+        },
+        secondaryImage {
+          asset-> {
+            url,
+            metadata {
+              lqip,
+              dimensions { width, height }
+            }
+          },
+          alt
+        }
       }
     },
     seo {
@@ -378,6 +406,51 @@ export type StorySectionData = {
   items: StoryItem[];
 };
 
+export type AboutSectionData = {
+  title?: {
+    hu?: string;
+    en?: string;
+  };
+  prologue?: {
+    hu?: string;
+    en?: string;
+  };
+  quote?: {
+    hu?: string;
+    en?: string;
+  };
+  description?: {
+    hu?: PortableTextBlock[];
+    en?: PortableTextBlock[];
+  };
+  mainImage: {
+    asset: {
+      url: string;
+      metadata: {
+        lqip: string;
+        dimensions: {
+          width: number;
+          height: number;
+        };
+      };
+    };
+    alt?: string;
+  };
+  secondaryImage: {
+    asset: {
+      url: string;
+      metadata: {
+        lqip: string;
+        dimensions: {
+          width: number;
+          height: number;
+        };
+      };
+    };
+    alt?: string;
+  };
+};
+
 export type BaseSection = {
   _key: string;
 };
@@ -392,7 +465,8 @@ export type SectionData =
   | ({ _type: 'gallerySection' } & BaseSection & GallerySectionData)
   | ({ _type: 'storySection' } & BaseSection & StorySectionData)
   | ({ _type: 'contactSection' } & BaseSection & ContactSectionData)
-  | ({ _type: 'masonryGallerySection' } & BaseSection & MasonryGallerySectionData);
+  | ({ _type: 'masonryGallerySection' } & BaseSection & MasonryGallerySectionData)
+  | ({ _type: 'aboutSection' } & BaseSection & AboutSectionData);
 
 type LocalizedString = {
   hu?: string;
