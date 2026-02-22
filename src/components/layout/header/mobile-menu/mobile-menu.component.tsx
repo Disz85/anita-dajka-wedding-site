@@ -10,6 +10,7 @@ import { menuContentLayerVariants } from './mobile-menu.variants';
 
 export const MobileMenu = ({
   isOpen,
+  onClose,
   navigation,
   settings,
   locale,
@@ -34,7 +35,7 @@ export const MobileMenu = ({
                 withPaddingForDesktop={true}
                 className="flex min-h-full flex-col justify-between pb-10 pt-4"
               >
-                <MobileMenuBody navigation={navigation} locale={locale} />
+                <MobileMenuBody navigation={navigation} locale={locale} onClose={onClose} />
                 <MobileMenuFooter settings={settings} />
               </Container>
             </div>

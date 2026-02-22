@@ -94,7 +94,13 @@ export const Header = ({ data, settings, locale }: HeaderProps): React.JSX.Eleme
         )}
       </AnimatePresence>
 
-      <MobileMenu isOpen={isOpen} navigation={allNavigation} settings={settings} locale={locale} />
+      <MobileMenu
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        navigation={allNavigation}
+        settings={settings}
+        locale={locale}
+      />
     </>
   );
 };
