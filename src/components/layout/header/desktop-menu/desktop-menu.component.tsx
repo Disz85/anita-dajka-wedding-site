@@ -24,9 +24,10 @@ const NavItem = ({ item, locale }: { item: NavLink; locale: string }): React.JSX
     : cn(baseLinkClassName, 'hover:opacity-60');
 
   const content = item.isHighlighted ? <span className="relative z-10">{label}</span> : label;
-  const href = item.href || '#';
+  const href =
+    item.linkType === 'internal' ? `/${item.internalSlug ?? ''}` : item.externalUrl || '#';
 
-  if (item.isExternal || !isAppPathname(href)) {
+  if (item.linkType === 'external' || !isAppPathname(href)) {
     return (
       <a
         href={href}

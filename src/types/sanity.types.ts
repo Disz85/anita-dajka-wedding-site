@@ -19,7 +19,9 @@ export type NavLink = {
     hu?: string;
     en?: string;
   };
-  href?: string;
+  linkType?: 'internal' | 'external';
+  internalSlug?: string;
+  externalUrl?: string;
   isExternal?: boolean;
   isHighlighted?: boolean;
 };

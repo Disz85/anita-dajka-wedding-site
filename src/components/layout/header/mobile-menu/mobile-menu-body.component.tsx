@@ -21,12 +21,15 @@ const NavItem = ({
   const className =
     'text-3xl font-lora tracking-widest uppercase inline-block transition-all duration-500 ease-out hover:tracking-[0.15em] hover:text-primary/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2';
 
-  if (item.isExternal) {
+  const href =
+    item.linkType === 'internal' ? `/${item.internalSlug ?? ''}` : item.externalUrl || '#';
+
+  if (item.linkType === 'external') {
     return (
       <a
-        href={item.href || '#'}
-        target="_blank"
-        rel="noopener noreferrer"
+        href={href}
+        target={item.isExternal ? '_blank' : undefined}
+        rel={item.isExternal ? 'noopener noreferrer' : undefined}
         className={className}
         onClick={onClose}
       >
@@ -36,7 +39,7 @@ const NavItem = ({
   }
 
   return (
-    <DynamicLink href={item.href || '#'} className={className} onClick={onClose}>
+    <DynamicLink href={href} className={className} onClick={onClose}>
       {label}
     </DynamicLink>
   );

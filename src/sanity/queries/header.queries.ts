@@ -25,7 +25,9 @@ export const headerQuery = groq`
         hu,
         en
       },
-      href,
+      linkType,
+      "internalSlug": internalLink->slug.current,
+      externalUrl,
       isExternal,
       isHighlighted
     },
@@ -34,7 +36,9 @@ export const headerQuery = groq`
         hu,
         en
       },
-      href,
+      linkType,
+      "internalSlug": internalLink->slug.current,
+      externalUrl,
       isExternal,
       isHighlighted
     }
