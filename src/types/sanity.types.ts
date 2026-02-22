@@ -13,17 +13,390 @@
  */
 
 // Source: ../anita-dajka-wedding-cms/schema.json
+export type MasonryGallerySection = {
+  _type: 'masonryGallerySection';
+  title?: LocalizedString;
+  description?: LocalizedText;
+  items?: Array<{
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: 'reference';
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: 'image';
+    };
+    _type: 'masonryImage';
+    _key: string;
+  }>;
+};
+
+export type ContactSection = {
+  _type: 'contactSection';
+  title?: LocalizedString;
+  subtitle?: LocalizedString;
+  redirectUrl?: string;
+};
+
+export type StorySection = {
+  _type: 'storySection';
+  items?: Array<{
+    mainImage?: {
+      asset?: {
+        _ref: string;
+        _type: 'reference';
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: 'image';
+    };
+    secondMainImage?: {
+      asset?: {
+        _ref: string;
+        _type: 'reference';
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: 'image';
+    };
+    secondaryImage?: {
+      asset?: {
+        _ref: string;
+        _type: 'reference';
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: 'image';
+    };
+    title?: LocalizedString;
+    description?: LocalizedText;
+    layout?: 'right' | 'right-bottom' | 'left' | 'left-bottom';
+    _type: 'storyRow';
+    _key: string;
+  }>;
+};
+
+export type GallerySection = {
+  _type: 'gallerySection';
+  title?: LocalizedString;
+  subtitle?: LocalizedString;
+  description?: LocalizedText;
+  items?: Array<
+    {
+      _key: string;
+    } & GalleryItem
+  >;
+};
+
+export type GalleryItem = {
+  _type: 'galleryItem';
+  title?: LocalizedString;
+  subtitle?: LocalizedString;
+  link?: string;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: 'image';
+  };
+};
+
+export type PortfolioSection = {
+  _type: 'portfolioSection';
+  title?: LocalizedString;
+  subtitle?: LocalizedString;
+  description?: LocalizedText;
+  items?: Array<
+    {
+      _key: string;
+    } & PortfolioItem
+  >;
+};
+
+export type PortfolioItem = {
+  _type: 'portfolioItem';
+  title?: LocalizedString;
+  link?: string;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: 'image';
+  };
+  textAlignment?: 'left' | 'center' | 'right';
+};
+
+export type Testimonial = {
+  _type: 'testimonial';
+  author?: string;
+  text?: LocalizedText;
+};
+
+export type AboutSection = {
+  _type: 'aboutSection';
+  title?: LocalizedString;
+  prologue?: LocalizedString;
+  mainImage?: {
+    asset?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: 'image';
+  };
+  secondaryImage?: {
+    asset?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: 'image';
+  };
+  quote?: LocalizedString;
+  description?: LocalizedBlockContent;
+};
+
+export type LocalizedBlockContent = {
+  _type: 'localizedBlockContent';
+  hu?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: 'span';
+      _key: string;
+    }>;
+    style?: 'normal';
+    listItem?: never;
+    markDefs?: Array<{
+      href?: string;
+      _type: 'link';
+      _key: string;
+    }>;
+    level?: number;
+    _type: 'block';
+    _key: string;
+  }>;
+  en?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: 'span';
+      _key: string;
+    }>;
+    style?: 'normal';
+    listItem?: never;
+    markDefs?: Array<{
+      href?: string;
+      _type: 'link';
+      _key: string;
+    }>;
+    level?: number;
+    _type: 'block';
+    _key: string;
+  }>;
+};
+
 export type NavLink = {
   _type: 'navLink';
-  label?: {
-    hu?: string;
-    en?: string;
-  };
+  label?: LocalizedString;
   linkType?: 'internal' | 'external';
-  internalSlug?: string;
+  internalLink?: {
+    _ref: string;
+    _type: 'reference';
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: 'page';
+  };
   externalUrl?: string;
   isExternal?: boolean;
   isHighlighted?: boolean;
+};
+
+export type Home = {
+  _id: string;
+  _type: 'home';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  heroSection?: HeroSection;
+  highlightsSection?: HighlightsSection;
+  videoSection?: VideoSection;
+  introductionSection?: IntroductionSection;
+  testimonialsSection?: TestimonialsSection;
+};
+
+export type TestimonialsSection = {
+  _type: 'testimonialsSection';
+  testimonials?: Array<
+    {
+      _key: string;
+    } & Testimonial
+  >;
+};
+
+export type IntroductionSection = {
+  _type: 'introductionSection';
+  title?: LocalizedString;
+  subtitle?: LocalizedString;
+  description?: LocalizedBlockContent;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: LocalizedString;
+    _type: 'image';
+  };
+  ctaLabel?: LocalizedString;
+  ctaUrl?: string;
+};
+
+export type VideoSection = {
+  _type: 'videoSection';
+  title?: LocalizedBlockContent;
+  subtitle?: LocalizedString;
+  description?: LocalizedBlockContent;
+  video?: {
+    asset?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.fileAsset';
+    };
+    media?: unknown;
+    _type: 'file';
+  };
+  poster?: {
+    asset?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: 'image';
+  };
+  posterAlt?: LocalizedString;
+};
+
+export type HighlightsSection = {
+  _type: 'highlightsSection';
+  title?: LocalizedString;
+  subtitle?: LocalizedString;
+  description?: LocalizedText;
+  items?: Array<{
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: 'reference';
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: 'image';
+    };
+    title?: LocalizedString;
+    alt?: LocalizedString;
+    description?: LocalizedText;
+    _type: 'highlightImage';
+    _key: string;
+  }>;
+};
+
+export type HeroSection = {
+  _type: 'heroSection';
+  title?: LocalizedString;
+  subtitle?: LocalizedString;
+  items?: Array<{
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: 'reference';
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: 'image';
+    };
+    title?: LocalizedString;
+    subtitle?: LocalizedString;
+    alt?: LocalizedString;
+    _type: 'heroImage';
+    _key: string;
+  }>;
+};
+
+export type Footer = {
+  _id: string;
+  _type: 'footer';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  brandName?: LocalizedString;
+  tagline?: LocalizedString;
+  instagramHandle?: string;
+  instagramImages?: Array<{
+    asset?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: 'image';
+    _key: string;
+  }>;
 };
 
 export type Header = {
@@ -44,10 +417,7 @@ export type Header = {
     crop?: SanityImageCrop;
     _type: 'image';
   };
-  logoAlt?: {
-    hu?: string;
-    en?: string;
-  };
+  logoAlt?: LocalizedString;
   leftNavigation?: Array<
     {
       _key: string;
@@ -74,6 +444,32 @@ export type Settings = {
   facebookUrl?: string;
 };
 
+export type Inquiry = {
+  _id: string;
+  _type: 'inquiry';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  email?: string;
+  phone?: string;
+  referralSource?:
+    | 'instagram'
+    | 'google'
+    | 'facebook'
+    | 'pinterest'
+    | 'friend'
+    | 'vendor'
+    | 'other';
+  eventDate?: string;
+  location?: string;
+  message?: string;
+  submittedAt?: string;
+  status?: 'new' | 'replied' | 'booked' | 'archived';
+  source?: string;
+  confirmEmail?: string;
+};
+
 export type Page = {
   _id: string;
   _type: 'page';
@@ -81,97 +477,79 @@ export type Page = {
   _updatedAt: string;
   _rev: string;
   title?: string;
+  parent?: {
+    _ref: string;
+    _type: 'reference';
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: 'page';
+  };
   slug?: Slug;
-  content?: Array<
-    | {
-        children?: Array<{
-          marks?: Array<string>;
-          text?: string;
-          _type: 'span';
-          _key: string;
-        }>;
-        style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote';
-        listItem?: 'bullet' | 'number';
-        markDefs?: Array<{
-          href?: string;
-          _type: 'link';
-          _key: string;
-        }>;
-        level?: number;
-        _type: 'block';
+  subtitle?: LocalizedString;
+  description?: LocalizedText;
+  icon?: string;
+  sections?: Array<
+    | ({
         _key: string;
-      }
-    | {
-        asset?: {
-          _ref: string;
-          _type: 'reference';
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-        };
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        _type: 'image';
+      } & HeroSection)
+    | ({
         _key: string;
-      }
+      } & IntroductionSection)
+    | ({
+        _key: string;
+      } & AboutSection)
+    | ({
+        _key: string;
+      } & PortfolioSection)
+    | ({
+        _key: string;
+      } & HighlightsSection)
+    | ({
+        _key: string;
+      } & VideoSection)
+    | ({
+        _key: string;
+      } & StorySection)
+    | ({
+        _key: string;
+      } & TestimonialsSection)
+    | ({
+        _key: string;
+      } & GallerySection)
+    | ({
+        _key: string;
+      } & ContactSection)
+    | ({
+        _key: string;
+      } & MasonryGallerySection)
   >;
+  seo?: {
+    title?: string;
+    description?: string;
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: 'reference';
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: 'image';
+    };
+  };
 };
 
-export type Wedding = {
-  _id: string;
-  _type: 'wedding';
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: string;
-  slug?: Slug;
-  date?: string;
-  coverImage?: {
-    asset?: {
-      _ref: string;
-      _type: 'reference';
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: 'image';
-  };
-  location?: string;
-  excerpt?: string;
-  gallery?: Array<{
-    asset?: {
-      _ref: string;
-      _type: 'reference';
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: 'image';
-    _key: string;
-  }>;
-  content?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: 'span';
-      _key: string;
-    }>;
-    style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote';
-    listItem?: 'bullet' | 'number';
-    markDefs?: Array<{
-      href?: string;
-      _type: 'link';
-      _key: string;
-    }>;
-    level?: number;
-    _type: 'block';
-    _key: string;
-  }>;
+export type LocalizedText = {
+  _type: 'localizedText';
+  hu?: string;
+  en?: string;
+};
+
+export type LocalizedString = {
+  _type: 'localizedString';
+  hu?: string;
+  en?: string;
 };
 
 export type MediaTag = {
@@ -302,11 +680,30 @@ export type SanityAssetSourceData = {
 };
 
 export type AllSanitySchemaTypes =
+  | MasonryGallerySection
+  | ContactSection
+  | StorySection
+  | GallerySection
+  | GalleryItem
+  | PortfolioSection
+  | PortfolioItem
+  | Testimonial
+  | AboutSection
+  | LocalizedBlockContent
   | NavLink
+  | Home
+  | TestimonialsSection
+  | IntroductionSection
+  | VideoSection
+  | HighlightsSection
+  | HeroSection
+  | Footer
   | Header
   | Settings
+  | Inquiry
   | Page
-  | Wedding
+  | LocalizedText
+  | LocalizedString
   | MediaTag
   | SanityImagePaletteSwatch
   | SanityImagePalette
@@ -321,3 +718,9 @@ export type AllSanitySchemaTypes =
   | SanityAssetSourceData;
 
 export declare const internalGroqTypeReferenceTo: unique symbol;
+
+type ArrayOf<T> = Array<
+  T & {
+    _key: string;
+  }
+>;

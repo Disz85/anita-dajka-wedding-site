@@ -25,7 +25,11 @@ const NavItem = ({ item, locale }: { item: NavLink; locale: string }): React.JSX
 
   const content = item.isHighlighted ? <span className="relative z-10">{label}</span> : label;
   const href =
-    item.linkType === 'internal' ? `/${item.internalSlug ?? ''}` : item.externalUrl || '#';
+    item.linkType === 'home'
+      ? '/'
+      : item.linkType === 'internal'
+        ? `/${item.internalSlug ?? ''}`
+        : item.externalUrl || '#';
 
   if (item.linkType === 'external' || !isAppPathname(href)) {
     return (

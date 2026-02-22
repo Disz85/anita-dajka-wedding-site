@@ -22,7 +22,11 @@ const NavItem = ({
     'text-3xl font-lora tracking-widest uppercase inline-block transition-all duration-500 ease-out hover:tracking-[0.15em] hover:text-primary/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2';
 
   const href =
-    item.linkType === 'internal' ? `/${item.internalSlug ?? ''}` : item.externalUrl || '#';
+    item.linkType === 'home'
+      ? '/'
+      : item.linkType === 'internal'
+        ? `/${item.internalSlug ?? ''}`
+        : item.externalUrl || '#';
 
   if (item.linkType === 'external') {
     return (

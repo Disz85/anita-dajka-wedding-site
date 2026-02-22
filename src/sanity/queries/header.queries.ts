@@ -47,5 +47,8 @@ export const headerQuery = groq`
 
 // Re-exporting refined types for the frontend to ensure strictness where needed
 // but basing them on the "Contract" (Sanity types)
-export type NavLink = SanityNavLink;
+export type NavLink = Omit<SanityNavLink, 'internalLink' | 'linkType'> & {
+  linkType?: 'internal' | 'external' | 'home';
+  internalSlug?: string;
+};
 export type HeaderData = SanityHeader;

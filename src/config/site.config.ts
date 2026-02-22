@@ -12,6 +12,7 @@ export const siteConfig = {
     projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? '',
     dataset: process.env.NEXT_PUBLIC_SANITY_DATASET ?? 'production',
     apiVersion: '2024-01-30',
+    revalidate: 3600,
   },
   openai: {
     model: process.env.OPENAI_MODEL ?? 'gpt-4o-mini',
