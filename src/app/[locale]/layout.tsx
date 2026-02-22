@@ -33,10 +33,10 @@ export async function generateMetadata({
 
   return {
     title: {
-      template: `%s | ${settings.siteTitle || messages.metadata.title}`,
-      default: settings.siteTitle || messages.metadata.title,
+      template: `%s | ${settings?.siteTitle || messages.metadata.title}`,
+      default: settings?.siteTitle || messages.metadata.title,
     },
-    description: settings.siteDescription || messages.metadata.description,
+    description: settings?.siteDescription || messages.metadata.description,
   };
 }
 
