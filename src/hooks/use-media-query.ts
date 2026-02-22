@@ -5,7 +5,9 @@ import { useSyncExternalStore, useCallback } from 'react';
 export function useMediaQuery(query: string): boolean {
   const subscribe = useCallback(
     (callback: () => void) => {
-      if (typeof window === 'undefined') {return () => {};}
+      if (typeof window === 'undefined') {
+        return () => {};
+      }
 
       const media = window.matchMedia(query);
       media.addEventListener('change', callback);
@@ -15,7 +17,9 @@ export function useMediaQuery(query: string): boolean {
   );
 
   const getSnapshot = () => {
-    if (typeof window === 'undefined') {return false;}
+    if (typeof window === 'undefined') {
+      return false;
+    }
     return window.matchMedia(query).matches;
   };
 
