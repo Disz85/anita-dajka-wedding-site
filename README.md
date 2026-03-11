@@ -76,3 +76,11 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 
 This project uses **Conventional Commits** (e.g., `feat: add gallery component`, `fix: mobile padding`).
 Husky hooks will prevent committing if linting fails or commit messages are invalid.
+
+## License
+
+This repository is published for portfolio and review purposes only.
+
+The source code is not licensed for reuse, redistribution, modification, or commercial use.
+
+All rights reserved.
